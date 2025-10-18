@@ -1,0 +1,709 @@
+local Types = {
+    B = 1,
+    W = 2,
+    D = 4,
+    X = 8,
+    F = 16,
+    Q = 32,
+    E = 64,
+    A = 128,
+}
+
+local fun_list = {"c"}
+local fun_add = function(fun_name)
+    local tmp_fun_list = {}
+    for i = 1, #fun_list do
+        if fun_list[i] == fun_name then
+            return;
+        end
+        table.insert(tmp_fun_list, fun_list[i])
+    end
+    table.insert(tmp_fun_list, fun_name)
+    fun_list = tmp_fun_list
+    return;
+end
+
+local fun_return = function()
+    local tmp_fun_list = {}
+    for i = 1, #fun_list - 1 do
+        table.insert(tmp_fun_list, fun_list[i])
+    end
+    fun_list = tmp_fun_list
+    if #fun_list > 0 then
+        _ENV[fun_list[#fun_list]]()
+    else
+        gg.alert("！")
+    end
+    return;
+end
+
+
+
+
+local exit = os.exit
+function os.exit() 
+    
+    exit()
+end
+    
+function c_a() -- 局内分数
+    local FLAGS = Types['D']
+    gg.clearResults()
+    gg.setRanges(32)
+    gg.searchNumber("1141866496", FLAGS)
+    local count = gg.getResultsCount()
+    local results = gg.getResults(count)
+    gg.clearResults()
+    local spare = {{'1120534528', 1536, Types['D']}}
+    for i = 1, #spare do
+        local tmp, resultsTmp = {}, {}
+        for _, v in ipairs(results) do
+            table.insert(tmp, {
+                flags = spare[i][3] or FLAGS,
+                address = v.address + tonumber(spare[i][2]),
+            })
+        end
+        tmp = gg.getValues(tmp)
+        for ii, v in ipairs(tmp) do
+            if v.value == spare[i][1] then
+                table.insert(resultsTmp, results[ii])
+            end
+        end
+        results = resultsTmp
+    end
+    
+  
+    local input_value = gg.prompt({'输入分数，每增加10000分一个秘宝。改完吃个饼干或者肉刷新分数'}, {}, {'number'})
+    if not input_value then
+        gg.toast("操作已取消")
+        return
+    end
+    
+
+    if not input_value[1] then
+        gg.toast("输入无效")
+        return
+    end
+    
+    local tmp, save, edit = {}, {}, {{input_value[1], '2996', 'D', false}}
+    for _, v in ipairs(results) do
+        for i = 1, #edit do
+            if edit[i][4] then
+                table.insert(save, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    freeze = true,
+                    name = "局内分数",
+                    address = v.address + tonumber(edit[i][2]),
+                })
+            else
+                table.insert(tmp, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    address = v.address + tonumber(edit[i][2]),
+                })
+            end
+        end
+    end
+    if #tmp > 0 or #save > 0 then
+        gg.setValues(tmp)
+        gg.setValues(save)
+        gg.addListItems(save)
+        gg.toast(string.format("成功修改%d个数值", #tmp + #save))
+    else
+        gg.toast("开启失败")
+    end
+end
+
+function c_b() -- 局内等级
+    local FLAGS = Types['D']
+    gg.clearResults()
+    gg.setRanges(32)
+    gg.searchNumber("1144602624", FLAGS)
+    local count = gg.getResultsCount()
+    local results = gg.getResults(count)
+    gg.clearResults()
+    local spare = {{'1067366482', -44, Types['D']}}
+    for i = 1, #spare do
+        local tmp, resultsTmp = {}, {}
+        for _, v in ipairs(results) do
+            table.insert(tmp, {
+                flags = spare[i][3] or FLAGS,
+                address = v.address + tonumber(spare[i][2]),
+            })
+        end
+        tmp = gg.getValues(tmp)
+        for ii, v in ipairs(tmp) do
+            if v.value == spare[i][1] then
+                table.insert(resultsTmp, results[ii])
+            end
+        end
+        results = resultsTmp
+    end
+    
+
+    local input_value = gg.prompt({'输入1-79，改完之后升到下一级才会刷新修改的等级。等3级技能解锁以后再改，否则技能解锁不了'}, {}, {'number'})
+    if not input_value then
+        gg.toast("操作已取消")
+        return
+    end
+    
+
+    if not input_value[1] then
+        gg.toast("输入无效")
+        return
+    end
+    
+    local tmp, save, edit = {}, {}, {{input_value[1], '-80', 'D', false}}
+    for _, v in ipairs(results) do
+        for i = 1, #edit do
+            if edit[i][4] then
+                table.insert(save, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    freeze = true,
+                    name = "局内等级",
+                    address = v.address + tonumber(edit[i][2]),
+                })
+            else
+                table.insert(tmp, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    address = v.address + tonumber(edit[i][2]),
+                })
+            end
+        end
+    end
+    if #tmp > 0 or #save > 0 then
+        gg.setValues(tmp)
+        gg.setValues(save)
+        gg.addListItems(save)
+        gg.toast(string.format("成功修改%d个数值", #tmp + #save))
+    else
+        gg.toast("开启失败")
+    end
+end
+
+function c_combined() --资源修改
+    local FLAGS = Types['D']
+    gg.clearResults()
+    gg.setRanges(32)
+    gg.searchNumber("-579838658", FLAGS)
+    local count = gg.getResultsCount()
+    local results = gg.getResults(count)
+    gg.clearResults()
+    
+    -- 主特征码和副特征码
+    local spare = {
+        {'148764837', 4, Types['D']},  -- 主特征码
+        {'1', -92, Types['D']}         -- 副特征码，值为1，偏移-92
+    }
+    
+    -- 双重特征码验证
+    for i = 1, #spare do
+        local tmp, resultsTmp = {}, {}
+        for _, v in ipairs(results) do
+            table.insert(tmp, {
+                flags = spare[i][3] or FLAGS,
+                address = v.address + tonumber(spare[i][2]),
+            })
+        end
+        tmp = gg.getValues(tmp)
+        for ii, v in ipairs(tmp) do
+            if v.value == spare[i][1] then
+                table.insert(resultsTmp, results[ii])
+            end
+        end
+        results = resultsTmp
+        if #results == 0 then
+            gg.toast(string.format("特征码%d验证失败，未找到匹配地址", i))
+            return
+        end
+    end
+    
+    gg.toast(string.format("双重特征码验证成功，找到%d个地址", #results))
+    
+    -- 添加冻结选项到弹窗
+    local input_values = gg.prompt(
+        {
+            '❄️ 冻结修改后的值',
+            '钻石数量（留空不修改）',
+            '抽奖券数量（留空不修改）', 
+            '免广告卷数量（留空不修改）',
+            '首冲礼包值（输入300000）',
+            '重置礼包次数（输入0重置）',
+            '每日福利重置（输入0重置）',
+            '礼包获取的金币数量'
+        }, 
+        {false, '', '', '', '', '', '', ''}, 
+        {'checkbox', 'number', 'number','number', 'number', 'number', 'number', 'number'}
+    )
+    
+    if not input_values then
+        gg.toast("操作已取消")
+        return
+    end
+    
+    local freeze_enabled = input_values[1]  -- 第一个选项是冻结勾选框
+    local tmp, save = {}, {}
+    local modified_count = 0
+    local freeze_items = {}  -- 存储需要冻结的项
+  
+    local edits = {
+        {input_values[2], '-80', '钻石'},
+        {input_values[3], '40', '抽奖券'},
+        {input_values[4], '100', '免广告卷'},
+        {input_values[5], '88', '首冲礼包'},
+        {input_values[6], '108', '重置礼包次数'},
+        {input_values[7], '92', '每日福利重置'},
+        {input_values[8], '-36', '礼包获取的金币'}
+    }
+    
+    for _, v in ipairs(results) do
+        for i, edit in ipairs(edits) do
+            if edit[1] and edit[1] ~= '' then
+                local item = {
+                    value = edit[1],
+                    flags = Types['D'],
+                    address = v.address + tonumber(edit[2]),
+                }
+                table.insert(tmp, item)
+                
+                -- 如果启用了冻结，添加到冻结列表
+                if freeze_enabled then
+                    table.insert(freeze_items, {
+                        address = item.address,
+                        flags = item.flags,
+                        value = item.value,
+                        freeze = true,
+                        name = edit[3] or "冻结值"
+                    })
+                end
+                
+                modified_count = modified_count + 1
+            end
+        end
+    end
+    
+    if #tmp > 0 then
+        gg.setValues(tmp)
+        
+        -- 如果启用了冻结，添加到冻结列表
+        if freeze_enabled and #freeze_items > 0 then
+            gg.addListItems(freeze_items)
+            gg.toast(string.format("成功修改%d个数值并冻结", #tmp))
+        else
+            gg.toast(string.format("成功修改%d个数值", #tmp))
+        end
+
+        local modified_items = {}
+        for i, edit in ipairs(edits) do
+            if edit[1] and edit[1] ~= '' then
+                table.insert(modified_items, edit[3] .. ": " .. edit[1])
+            end
+        end
+        
+        if #modified_items > 0 then
+            local message = "已修改的项目:\n" .. table.concat(modified_items, "\n")
+            if freeze_enabled then
+                message = message .. "\n\n❄️ 数值已被冻结"
+            end
+            gg.toast(message)
+        end
+    else
+        gg.toast("没有进行任何修改，所有输入框都为空")
+    end
+end
+
+
+
+function c_i() --攻击生命
+    gg.clearResults()
+    gg.setRanges(32) 
+    
+  
+    local input_values = gg.prompt(
+        {'当前攻击值(1.把图鉴里的攻击和生命加成清零2.每次修改后想再修改，先恢复之前的攻击和生命):', '当前生命值:', '修改后的攻击值:', '修改后的生命值:'},
+        {'100', '501', '888888', '999999'},
+        {'number', 'number', 'number', 'number'}
+    )
+    
+    if not input_values then
+        gg.toast("操作已取消")
+        return
+    end
+    
+    -- 验证输入
+    if not input_values[1] or not input_values[2] or not input_values[3] or not input_values[4] then
+        gg.toast("输入无效，请填写所有字段")
+        return
+    end
+    
+    local search_value1 = input_values[1]
+    local search_value2 = input_values[2]
+    local new_value1 = input_values[3]
+    local new_value2 = input_values[4]
+    
+  
+    gg.searchNumber(search_value1..";"..search_value2.."::5", 16)
+    
+    if gg.getResultsCount() == 0 then
+        gg.toast("未找到目标数值，请确认游戏状态")
+        return
+    end
+    
+    local results = gg.getResults(100)
+    local tmp = {}
+    originalValues = {} 
+    
+    for i, v in ipairs(results) do
+    
+        table.insert(originalValues, {
+            address = v.address,
+            flags = v.flags,
+            value = v.value
+        })
+        
+
+        if v.value == search_value1 then
+            table.insert(tmp, {
+                address = v.address,
+                flags = 16,
+                value = new_value1
+            })
+        elseif v.value == search_value2 then
+            table.insert(tmp, {
+                address = v.address,
+                flags = 16,
+                value = new_value2
+            })
+        end
+    end
+    
+    if #tmp > 0 then
+        gg.setValues(tmp)
+        gg.toast(string.format("成功修改%d个数值", #tmp))
+        gg.clearResults()
+    else
+        gg.toast("修改失败")
+    end
+end
+
+function c_j() -- 恢复生命攻击修改
+    if not originalValues or #originalValues == 0 then
+        gg.toast("没有可恢复的修改记录")
+        return
+    end
+    
+    local tmp = {}
+    for i, v in ipairs(originalValues) do
+        table.insert(tmp, {
+            address = v.address,
+            flags = v.flags,
+            value = v.value
+        })
+    end
+    
+    if #tmp > 0 then
+        gg.setValues(tmp)
+        gg.toast(string.format("已恢复%d个数值", #tmp))
+        originalValues = {} 
+    else
+        gg.toast("恢复失败")
+    end
+end
+
+
+
+function c_k() --体验卡
+    gg.clearResults()
+    gg.setRanges(32) 
+    
+  
+    local input_values = gg.prompt(
+        {'ID(体验卡ID2001-2031道具ID3001-3007。:', '当前ID数量:', '修改后的ID:', '修改后的数量:'},
+        {'2013', '90', '2013', '99'},
+        {'number', 'number', 'number', 'number'}
+    )
+    
+    if not input_values then
+        gg.toast("操作已取消")
+        return
+    end
+    
+    -- 验证输入
+    if not input_values[1] or not input_values[2] or not input_values[3] or not input_values[4] then
+        gg.toast("输入无效，请填写所有字段")
+        return
+    end
+    
+    local search_value1 = input_values[1]
+    local search_value2 = input_values[2]
+    local new_value1 = input_values[3]
+    local new_value2 = input_values[4]
+    
+  
+    gg.searchNumber(search_value1..";"..search_value2.."::5", 4)
+    
+    if gg.getResultsCount() == 0 then
+        gg.toast("未找到目标数值，请确认游戏状态")
+        return
+    end
+    
+    local results = gg.getResults(100)
+    local tmp = {}
+    originalValues = {} 
+    
+    for i, v in ipairs(results) do
+    
+        table.insert(originalValues, {
+            address = v.address,
+            flags = v.flags,
+            value = v.value
+        })
+        
+
+        if v.value == search_value1 then
+            table.insert(tmp, {
+                address = v.address,
+                flags = 4,
+                value = new_value1
+            })
+        elseif v.value == search_value2 then
+            table.insert(tmp, {
+                address = v.address,
+                flags = 4,
+                value = new_value2
+            })
+        end
+    end
+    
+    if #tmp > 0 then
+        gg.setValues(tmp)
+        gg.toast(string.format("成功修改%d个数值", #tmp))
+        gg.clearResults()
+    else
+        gg.toast("修改失败")
+    end
+end
+
+
+--🍎🍎🍎🍎🍎🍎🍎
+
+function hyjs() -- 鱼吃鱼全解锁[特征搜索]
+-- 设置A内存
+gg.setRanges(gg.REGION_ANONYMOUS)
+
+-- 弹出搜索范围选择
+local input = gg.prompt(
+    {"请输入海域（输入1~11）"},
+    {"1"},
+    {"number"}
+)
+
+if input == nil then
+    gg.toast("用户取消操作")
+    os.exit()
+end
+
+-- 根据输入的数字确定搜索范围
+local rangeMap = {
+    [1] = {1001, 1015},
+    [2] = {1016, 1030},
+    [3] = {1031, 1045},
+    [4] = {1046, 1060},
+    [5] = {1061, 1075},
+    [6] = {1076, 1090},
+    [7] = {1091, 1105},
+    [8] = {1106, 1120},
+    [9] = {1121, 1135},
+    [10] = {1136, 1150},
+    [11] = {1151, 1165},
+    [12] = {1166, 1180}
+}
+
+local selectedRange = tonumber(input[1])
+if not selectedRange or selectedRange < 1 or selectedRange > 12 then
+    gg.alert("请输入有效的范围数字 (1-12)")
+    os.exit()
+end
+
+local minVal, maxVal = rangeMap[selectedRange][1], rangeMap[selectedRange][2]
+
+--gg.toast("开始搜索范围: " .. minVal .. " ~ " .. maxVal)
+
+-- 搜索D类型数据
+gg.searchNumber(minVal .. "~" .. maxVal, gg.TYPE_DWORD)
+
+local results = gg.getResults(100000) -- 获取最多100000个结果
+gg.toast("初步搜索到 " .. #results .. " 个结果")
+
+local filteredResults = {}
+
+-- 多次验证函数（增加对偏移-4和-8的检查）
+function verifyAddress(address)
+    -- 检查基地址是否有效（大于0）
+    if address < 8 then
+        return false
+    end
+    
+    -- 多次验证，确保地址稳定
+    for i = 1, 3 do  -- 验证3次
+        local offsets = {}
+        -- 负偏移检查
+        offsets[1] = {address = address - 8, flags = gg.TYPE_DWORD}  -- 偏移-8
+        offsets[2] = {address = address - 4, flags = gg.TYPE_DWORD}  -- 偏移-4
+        -- 正偏移检查
+        offsets[3] = {address = address + 4, flags = gg.TYPE_DWORD}   -- 偏移4
+        offsets[4] = {address = address + 12, flags = gg.TYPE_DWORD}  -- 偏移12
+        offsets[5] = {address = address + 16, flags = gg.TYPE_DWORD}  -- 偏移16
+        offsets[6] = {address = address + 24, flags = gg.TYPE_DWORD}  -- 偏移24
+        
+        local success, offsetValues = pcall(gg.getValues, offsets)
+        if not success then
+            return false  -- 如果获取值失败，认为地址无效
+        end
+        
+        local offsetMinus8Value = offsetValues[1].value
+        local offsetMinus4Value = offsetValues[2].value
+        local offset4Value = offsetValues[3].value
+        local offset12Value = offsetValues[4].value
+        local offset16Value = offsetValues[5].value
+        local offset24Value = offsetValues[6].value
+        
+        -- 检查所有条件
+        local condition1 = (offsetMinus8Value == 0)  -- 偏移-8等于0
+        local condition2 = (offsetMinus4Value == 0)  -- 偏移-4等于0
+        local condition3 = (offset4Value == 4 or offset4Value == 2 or offset4Value == 1 or offset4Value == 5)
+        local condition4 = (offset12Value == 0)
+        local condition5 = (offset16Value == 0)
+        local condition6 = (offset24Value >= 0 and offset24Value <= 40)
+        
+        -- 如果任何一次验证失败，返回false
+        if not (condition1 and condition2 and condition3 and condition4 and condition5 and condition6) then
+            return false
+        end
+        
+        -- 短暂延迟，让内存有机会变化
+        gg.sleep(10)
+    end
+    
+    return true
+end
+
+-- 过滤结果
+for i, v in ipairs(results) do
+    if verifyAddress(v.address) then
+        table.insert(filteredResults, v)
+    end
+end
+
+gg.toast("过滤后剩余 " .. #filteredResults .. " 个结果")
+
+-- 保存到列表前再次验证
+local finalResults = {}
+for i, v in ipairs(filteredResults) do
+    if verifyAddress(v.address) then
+        table.insert(finalResults, v)
+    end
+end
+
+gg.toast("最终验证后剩余 " .. #finalResults .. " 个结果")
+
+-- 使用固定值修改偏移
+if #finalResults > 0 then
+    local modifyResults = {}
+    
+    for i, baseAddress in ipairs(finalResults) do
+        -- 修改偏移4为1
+        table.insert(modifyResults, {
+            address = baseAddress.address + 4,
+            flags = gg.TYPE_DWORD,
+            value = 1
+        })
+        
+        -- 修改偏移8为50
+        table.insert(modifyResults, {
+            address = baseAddress.address + 8,
+            flags = gg.TYPE_DWORD,
+            value = 50
+        })
+        
+        -- 修改偏移24为38
+        table.insert(modifyResults, {
+            address = baseAddress.address + 24,
+            flags = gg.TYPE_DWORD,
+            value = 38
+        })
+        
+        -- 修改偏移28为1
+        table.insert(modifyResults, {
+            address = baseAddress.address + 28,
+            flags = gg.TYPE_DWORD,
+            value = 1
+        })
+    end
+    
+    -- 执行修改
+    if #modifyResults > 0 then
+        local success = gg.setValues(modifyResults)
+        if success then
+            local modifiedCount = #modifyResults
+            gg.alert("成功修改 " .. #finalResults .. " 。")
+        else
+            gg.alert("修改时出现错误")
+        end
+    end
+else
+    gg.alert("修改失败")
+end
+
+-- 清除搜索结果
+gg.clearResults()
+end
+
+--🍎🍎🍎🍎🍎🍎🍎
+
+function qkdj() -- 清空冻结[清空冻结]
+    gg.clearList()
+    gg.toast("清空冻结成功")
+end
+
+function eexit() 
+    while true do os.exit() end
+end
+
+function c() 
+    fun_add("c")
+    local __index__ = gg.choice({
+        '                  1.攻击生命',
+        '              2.恢复攻击生命', 
+        '                  3.局内分数',
+        '                  4.局内等级',
+        '                  5.资源修改',
+        '              6.体验卡和道具',
+        '                  7.海域解锁',
+        '                  8.清空冻结',
+        '                  9.退出脚本'
+    }, nil, "")
+    
+    if __index__ then
+        if __index__ == 1 then c_i()
+        elseif __index__ == 2 then c_j()
+        elseif __index__ == 3 then c_a() 
+        elseif __index__ == 4 then c_b() 
+        elseif __index__ == 5 then c_combined()  -- 使用整合功能
+        elseif __index__ == 6 then c_k() 
+        elseif __index__ == 7 then hyjs()
+        elseif __index__ == 8 then qkdj() 
+        elseif __index__ == 9 then eexit() 
+        end
+    end
+end
+
+while true do
+    if gg.isVisible(true) then
+        gg.setVisible(false)
+        _ENV[fun_list[#fun_list]]()
+    end
+end  
