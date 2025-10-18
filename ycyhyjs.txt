@@ -1,191 +1,551 @@
-当地的类型={
-B=1，1,
-W=2，2,
-D=4，4,
-X=8，8,
-F=16，16,
-Q=32，32,
-E=64，64,
-a=128，128,
+
+    host="http://w.t3data.net/406AA6AEF3B4BD8F" 
+    host2="http://w.t3data.net/887C811BC8CD8082" 
+    appkey="d16e687cdfd89e3f5c3a23bc7c624e35" 
+    basekey="v+ZDkCH/XwMxUSRpG5fbeluT6O0Y3BdEj4oany1K9hQzqVc8rmg7WtAJNs2LPiIF" 
+web = gg.makeRequest
+
+
+local HexTable = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"}
+local A = 0x67452301
+local B = 0xefcdab89
+local C = 0x98badcfe
+local D = 0x10325476
+
+local S11 = 7
+local S12 = 12
+local S13 = 17
+local S14 = 22
+local S21 = 5
+local S22 = 9
+local S23 = 14
+local S24 = 20
+local S31 = 4
+local S32 = 11
+local S33 = 16
+local S34 = 23
+local S41 = 6
+local S42 = 10
+local S43 = 15
+local S44 = 21
+
+local function F(x,y,z)
+  return (x & y) | ((~x) & z)
+end
+local function G(x,y,z)
+  return (x & z) | (y & (~z))
+end
+local function H(x,y,z)
+  return x ~ y ~ z
+end
+local function I(x,y,z)
+  return y ~ (x | (~z))
+end
+local function FF(a,b,c,d,x,s,ac)
+  a = a + F(b,c,d) + x + ac
+  a = (((a & 0xffffffff) << s) | ((a & 0xffffffff) >> 32 - s)) + b
+  return a & 0xffffffff
+end
+local function GG(a,b,c,d,x,s,ac)
+  a = a + G(b,c,d) + x + ac
+  a = (((a & 0xffffffff) << s) | ((a & 0xffffffff) >> 32 - s)) + b
+  return a & 0xffffffff
+end
+local function HH(a,b,c,d,x,s,ac)
+  a = a + H(b,c,d) + x + ac
+  a = (((a & 0xffffffff) << s) | ((a & 0xffffffff) >> 32 - s)) + b
+  return a & 0xffffffff
+end
+local function II(a,b,c,d,x,s,ac)
+  a = a + I(b,c,d) + x + ac
+  a = (((a & 0xffffffff) << s) | ((a & 0xffffffff) >> 32 - s)) + b
+  return a & 0xffffffff
+end
+
+
+
+local function MD5StringFill(s)
+  local len = s:len()
+  local mod512 = len * 8 % 512
+  --需要填充的字节数
+  local fillSize = (448 - mod512) // 8
+  if mod512 > 448 then
+    fillSize = (960 - mod512) // 8
+  end
+
+  local rTab = {}
+
+  local byteIndex = 1
+  for i = 1,len do
+    local index = (i - 1) // 4 + 1
+    rTab[index] = rTab[index] or 0
+    rTab[index] = rTab[index] | (s:byte(i) << (byteIndex - 1) * 8)
+    byteIndex = byteIndex + 1
+    if byteIndex == 5 then
+      byteIndex = 1
+    end
+  end
+
+  local b0x80 = false
+  local tLen = #rTab
+  if byteIndex ~= 1 then
+    rTab[tLen] = rTab[tLen] | 0x80 << (byteIndex - 1) * 8
+    b0x80 = true
+  end
+
+
+  for i = 1,fillSize // 4 do
+    if not b0x80 and i == 1 then
+      rTab[tLen + i] = 0x80
+     else
+      rTab[tLen + i] = 0x0
+    end
+  end
+
+  local bitLen = math.floor(len * 8)
+  tLen = #rTab
+  rTab[tLen + 1] = bitLen & 0xffffffff
+  rTab[tLen + 2] = bitLen >> 32
+
+  return rTab
+end
+
+
+
+function string.md5(s)
+  --填充
+  local fillTab = MD5StringFill(s)
+  local result = {A,B,C,D}
+
+  for i = 1,#fillTab // 16 do
+    local a = result[1]
+    local b = result[2]
+    local c = result[3]
+    local d = result[4]
+    local offset = (i - 1) * 16 + 1
+
+    a = FF(a, b, c, d, fillTab[offset + 0], S11, 0xd76aa478)
+    d = FF(d, a, b, c, fillTab[offset + 1], S12, 0xe8c7b756)
+    c = FF(c, d, a, b, fillTab[offset + 2], S13, 0x242070db)
+    b = FF(b, c, d, a, fillTab[offset + 3], S14, 0xc1bdceee)
+    a = FF(a, b, c, d, fillTab[offset + 4], S11, 0xf57c0faf)
+    d = FF(d, a, b, c, fillTab[offset + 5], S12, 0x4787c62a)
+    c = FF(c, d, a, b, fillTab[offset + 6], S13, 0xa8304613)
+    b = FF(b, c, d, a, fillTab[offset + 7], S14, 0xfd469501)
+    a = FF(a, b, c, d, fillTab[offset + 8], S11, 0x698098d8)
+    d = FF(d, a, b, c, fillTab[offset + 9], S12, 0x8b44f7af)
+    c = FF(c, d, a, b, fillTab[offset + 10], S13, 0xffff5bb1)
+    b = FF(b, c, d, a, fillTab[offset + 11], S14, 0x895cd7be)
+    a = FF(a, b, c, d, fillTab[offset + 12], S11, 0x6b901122)
+    d = FF(d, a, b, c, fillTab[offset + 13], S12, 0xfd987193)
+    c = FF(c, d, a, b, fillTab[offset + 14], S13, 0xa679438e)
+    b = FF(b, c, d, a, fillTab[offset + 15], S14, 0x49b40821)
+
+
+    a = GG(a, b, c, d, fillTab[offset + 1], S21, 0xf61e2562)
+    d = GG(d, a, b, c, fillTab[offset + 6], S22, 0xc040b340)
+    c = GG(c, d, a, b, fillTab[offset + 11], S23, 0x265e5a51)
+    b = GG(b, c, d, a, fillTab[offset + 0], S24, 0xe9b6c7aa)
+    a = GG(a, b, c, d, fillTab[offset + 5], S21, 0xd62f105d)
+    d = GG(d, a, b, c, fillTab[offset + 10], S22, 0x2441453)
+    c = GG(c, d, a, b, fillTab[offset + 15], S23, 0xd8a1e681)
+    b = GG(b, c, d, a, fillTab[offset + 4], S24, 0xe7d3fbc8)
+    a = GG(a, b, c, d, fillTab[offset + 9], S21, 0x21e1cde6)
+    d = GG(d, a, b, c, fillTab[offset + 14], S22, 0xc33707d6)
+    c = GG(c, d, a, b, fillTab[offset + 3], S23, 0xf4d50d87)
+    b = GG(b, c, d, a, fillTab[offset + 8], S24, 0x455a14ed)
+    a = GG(a, b, c, d, fillTab[offset + 13], S21, 0xa9e3e905)
+    d = GG(d, a, b, c, fillTab[offset + 2], S22, 0xfcefa3f8)
+    c = GG(c, d, a, b, fillTab[offset + 7], S23, 0x676f02d9)
+    b = GG(b, c, d, a, fillTab[offset + 12], S24, 0x8d2a4c8a)
+
+
+    a = HH(a, b, c, d, fillTab[offset + 5], S31, 0xfffa3942)
+    d = HH(d, a, b, c, fillTab[offset + 8], S32, 0x8771f681)
+    c = HH(c, d, a, b, fillTab[offset + 11], S33, 0x6d9d6122)
+    b = HH(b, c, d, a, fillTab[offset + 14], S34, 0xfde5380c)
+    a = HH(a, b, c, d, fillTab[offset + 1], S31, 0xa4beea44)
+    d = HH(d, a, b, c, fillTab[offset + 4], S32, 0x4bdecfa9)
+    c = HH(c, d, a, b, fillTab[offset + 7], S33, 0xf6bb4b60)
+    b = HH(b, c, d, a, fillTab[offset + 10], S34, 0xbebfbc70)
+    a = HH(a, b, c, d, fillTab[offset + 13], S31, 0x289b7ec6)
+    d = HH(d, a, b, c, fillTab[offset + 0], S32, 0xeaa127fa)
+    c = HH(c, d, a, b, fillTab[offset + 3], S33, 0xd4ef3085)
+    b = HH(b, c, d, a, fillTab[offset + 6], S34, 0x4881d05)
+    a = HH(a, b, c, d, fillTab[offset + 9], S31, 0xd9d4d039)
+    d = HH(d, a, b, c, fillTab[offset + 12], S32, 0xe6db99e5)
+    c = HH(c, d, a, b, fillTab[offset + 15], S33, 0x1fa27cf8)
+    b = HH(b, c, d, a, fillTab[offset + 2], S34, 0xc4ac5665)
+
+
+    a = II(a, b, c, d, fillTab[offset + 0], S41, 0xf4292244)
+    d = II(d, a, b, c, fillTab[offset + 7], S42, 0x432aff97)
+    c = II(c, d, a, b, fillTab[offset + 14], S43, 0xab9423a7)
+    b = II(b, c, d, a, fillTab[offset + 5], S44, 0xfc93a039)
+    a = II(a, b, c, d, fillTab[offset + 12], S41, 0x655b59c3)
+    d = II(d, a, b, c, fillTab[offset + 3], S42, 0x8f0ccc92)
+    c = II(c, d, a, b, fillTab[offset + 10], S43, 0xffeff47d)
+    b = II(b, c, d, a, fillTab[offset + 1], S44, 0x85845dd1)
+    a = II(a, b, c, d, fillTab[offset + 8], S41, 0x6fa87e4f)
+    d = II(d, a, b, c, fillTab[offset + 15], S42, 0xfe2ce6e0)
+    c = II(c, d, a, b, fillTab[offset + 6], S43, 0xa3014314)
+    b = II(b, c, d, a, fillTab[offset + 13], S44, 0x4e0811a1)
+    a = II(a, b, c, d, fillTab[offset + 4], S41, 0xf7537e82)
+    d = II(d, a, b, c, fillTab[offset + 11], S42, 0xbd3af235)
+    c = II(c, d, a, b, fillTab[offset + 2], S43, 0x2ad7d2bb)
+    b = II(b, c, d, a, fillTab[offset + 9], S44, 0xeb86d391)
+
+
+    result[1] = result[1] + a
+    result[2] = result[2] + b
+    result[3] = result[3] + c
+    result[4] = result[4] + d
+    result[1] = result[1] & 0xffffffff
+    result[2] = result[2] & 0xffffffff
+    result[3] = result[3] & 0xffffffff
+    result[4] = result[4] & 0xffffffff
+  end
+
+
+  local retStr = ""
+  for i = 1,4 do
+    for _ = 1,4 do
+      local temp = result[i] & 0x0F
+      local str = HexTable[temp + 1]
+      result[i] = result[i] >> 4
+      temp = result[i] & 0x0F
+      retStr = retStr .. HexTable[temp + 1] .. str
+      result[i] = result[i] >> 4
+    end
+  end
+
+  return retStr
+end
+
+function Base64en(data)
+  local b =basekey
+  return ((data:gsub('.', function(x)
+    local r, b='', x:byte()
+    for i = 8, 1, -1 do r = r .. (b % 2 ^ i - b % 2 ^ (i - 1) > 0 and '1' or '0') end
+    return r;
+  end) .. '0000'):gsub('%d%d%d?%d?%d?%d?', function(x)
+    if (#x < 6) then return '' end
+    local c = 0
+    for i = 1, 6 do c = c + (x:sub(i, i)=='1' and 2 ^ (6 - i) or 0) end
+    return b:sub(c + 1, c + 1)
+  end) .. ({ '', '==', '=' })[#data % 3 + 1])
+end
+
+function Base64de(str)
+  local b =basekey
+  str = string.gsub(str, '[^' .. b .. '=]', '')
+  return (str:gsub('.', function(x)
+    if (x == '=') then return '' end
+    local r, f = '', (b:find(x)-1)
+    for i = 6, 1, -1 do r = r .. (f % 2 ^ i - f % 2 ^ (i - 1) > 0 and '1' or '0') end
+    return r;
+  end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x)
+    if (#x ~= 8) then return '' end
+    local c = 0
+    for i = 1, 8 do c = c + (x:sub(i, i) == '1' and 2 ^ (8 - i) or 0) end
+    return string.char(c)
+  end))
+end
+function jzzh(str,ms)
+  str = tostring(str)
+  if ms=="加" then
+    local index=1
+    local ret=""
+    for index=1,str:len() do
+      ret=ret..string.format("%02X",str:sub(index):byte())
+    end
+    return string.lower(ret)
+   else
+    str=str:gsub("[%s%p]",""):upper()
+    local index=1
+    local ret=""
+    for index=1,str:len(),2 do
+      ret=ret..string.char(tonumber(str:sub(index,index+1),16))
+    end
+    return ret
+  end
+end
+
+
+imeifile="/sdcard/"..string.lower(string.md5(host)).."_imei.ini" ---机器码储存文件路径
+kmfile="/sdcard/"..string.lower(string.md5(host)).."_kami.ini" ---卡密输入储存卡密路径@
+function jiami(str)
+  rc4=Base64en(str)
+  sljz=jzzh(rc4,"加")
+  return sljz
+end
+
+file=io.open(imeifile,"rb")
+if file==nil then
+  imeis=Base64en(math.random(10000000000,999999999999)..os.time())
+  io.open(imeifile, 'w')
+  io.open(imeifile,"w"):write(imeis):close()
+end
+imei=Base64de(io.open(imeifile):read("*a"))
+
+kami=io.open(kmfile,"rb")
+if kami==nil then
+  kami=""
+ else
+  kami=Base64de(io.open(kmfile):read("*a"))
+end
+
+
+function main()
+  local k=gg.prompt({"请输入卡密[输入1解绑]"},{kami},{"text"})
+  if k==nil then
+   else
+    km=k[1]
+    if km=="1" then
+    
+  local k=gg.prompt({"请输入要解绑的卡密"},{kami},{"text"})
+  if k==nil then
+   else
+    km=k[1]
+    time=os.time()
+    local i=web(host2.."&kami="..jiami(k[1]).."&t="..jiami(tostring(os.time()))).content
+    if i == nil then
+      gg.toast("解绑失败")
+      os.exit()
+     else
+      local i=Base64de(i)
+      gg.alert(i)
+    end
+  end
+  XGCK = -1
+    end
+    time=os.time()
+    local i=web(host.."&kami="..jiami(k[1]).."&imei="..jiami(imei).."&t="..jiami(tostring(os.time()))).content
+    if i == nil then
+      gg.toast("登录失败")
+      os.exit()
+     else
+      local i=Base64de(i)
+      local is=i:match("登录成功:(.-);")
+      local id=i:match("卡密ID:(.-);")
+      local ends=i:match("到期时间:(.-);")
+      local sysj=i:match("剩余时间:(.-);")
+      local sbm=i:match("校验密钥:(.-);")
+      local dqsjc=i:match("当前时间戳:(.-);")
+      if is=="200" then
+        if sbm==string.lower(string.md5(tostring(id..appkey..ends..os.date("%Y%m%d%H%M")))) then
+          local times=dqsjc-os.time()
+          if times<5 then
+            io.open(kmfile,"w"):write(Base64en(km)):close()
+            gg.alert("登录成功\n到期时间:"..ends)
+            index()
+           else
+            gg.alert("数据过期")
+          end
+         else
+          gg.alert("校验失败")
+        end
+       else
+        gg.alert(i)
+        maine()
+      end
+    end
+  end
+  XGCK = -1
+end
+
+function index()
+
+  --代码
+  
+local Types = {
+    B = 1,
+    W = 2,
+    D = 4,
+    X = 8,
+    F = 16,
+    Q = 32,
+    E = 64,
+    A = 128,
 }
 
-当地的fun_list={"c"}"c"}
-当地的fun_add=功能(fun_name)
-本地tmp_fun_list={}当地的tmp_fun_list={}
-对于i=为I=1，#fun_list
-如果fun_list[i]==fun_name，则如果fun_list[i]==fun_name然后
-返回；返回;
-结束结束
-table.insert(tmp_fun_list，fun_list[i])
-结束结束
-table.insert(tmp_fun_list，fun_name)
-fun_list=tmp_fun_list
-返回；返回;
-结束
+local fun_list = {"c"}
+local fun_add = function(fun_name)
+    local tmp_fun_list = {}
+    for i = 1, #fun_list do
+        if fun_list[i] == fun_name then
+            return;
+        end
+        table.insert(tmp_fun_list, fun_list[i])
+    end
+    table.insert(tmp_fun_list, fun_name)
+    fun_list = tmp_fun_list
+    return;
+end
 
-当地的fun_return=功能()
-本地tmp_fun_list={}当地的tmp_fun_list={}
-对于i=为I=1，#fun_list-1做
-table.insert(tmp_fun_list，fun_list[i])
-结束结束
-fun_list=tmp_fun_list
-如果#fun_list>如果#fun_list>0然后
-_ENV[fun_list[#fun_list]]()
-其他其他
-gg.alert("！")"！")
-结束结束
-返回；返回;
-结束
-
-
+local fun_return = function()
+    local tmp_fun_list = {}
+    for i = 1, #fun_list - 1 do
+        table.insert(tmp_fun_list, fun_list[i])
+    end
+    fun_list = tmp_fun_list
+    if #fun_list > 0 then
+        _ENV[fun_list[#fun_list]]()
+    else
+        gg.alert("！")
+    end
+    return;
+end
 
 
-当地的exit=os.exit
-功能os.exit()
+
+
+local exit = os.exit
+function os.exit() 
     
-出口()
-结束
+    exit()
+end
     
-功能C_a()-- 局内分数
-本地标志=类型['D']当地的标志=类型['D']
-gg.clearResults()
-gg.setRanges(32)32)
-gg.searchNumber("1141866496"，标志)"1141866496"，标志)
-本地计数=gg.getResultsCount()当地的count=gg.getResultsCount()
-本地结果=gg.getResults(count)当地的results=gg.getResults(count)
-gg.clearResults()
-本地备件={{当地的备用={{1536，类型['D'，类型['D'，1536，类型['D']}}
-对于i=为I=1，#备用
-本地tmp，resultsTmp={}，{}当地的tmp，resultsTmp={}，{}
-dofor_，vin ipairs(结果)做
-table.insert(tmp，{
-flags=备用[i][3]或旗帜，或旗帜，
-地址=v.address+tonumber(备用[i][2])，2]),
+function c_a() -- 局内分数
+    local FLAGS = Types['D']
+    gg.clearResults()
+    gg.setRanges(32)
+    gg.searchNumber("1141866496", FLAGS)
+    local count = gg.getResultsCount()
+    local results = gg.getResults(count)
+    gg.clearResults()
+    local spare = {{'1120534528', 1536, Types['D']}}
+    for i = 1, #spare do
+        local tmp, resultsTmp = {}, {}
+        for _, v in ipairs(results) do
+            table.insert(tmp, {
+                flags = spare[i][3] or FLAGS,
+                address = v.address + tonumber(spare[i][2]),
             })
-结束结束
-tmp=gg.getValues(tmp)
-对于i，v在...内ipairs(tmp)做为II，vin ipairs(tmp)做
-如果v.value==备用[i][如果v.value==备用[i][1] 然后
-table.insert(结果Tmp，结果[ii])
-结束结束
-结束结束
-results=resultsTmp
-结束结束
+        end
+        tmp = gg.getValues(tmp)
+        for ii, v in ipairs(tmp) do
+            if v.value == spare[i][1] then
+                table.insert(resultsTmp, results[ii])
+            end
+        end
+        results = resultsTmp
+    end
     
   
-本地输入_值=gg.prompt({当地的input_value=gg.prompt({'输入分数，每增加10000分一个秘宝。 改完吃个饼干或者肉刷新分数'}, {}, {'数字'}, {}, {'数字'})
-如果不是输入值，则如果不input_value然后
-gg.toast("操作已取消")"操作已取消")
-返回返回
-结束结束
+    local input_value = gg.prompt({'输入分数，每增加10000分一个秘宝。改完吃个饼干或者肉刷新分数'}, {}, {'number'})
+    if not input_value then
+        gg.toast("操作已取消")
+        return
+    end
     
 
-如果不是input_value[如果]，则如果不input_value[不input_value[
-gg.toast("输入无效")"输入无效")
-返回返回
-结束结束
+    if not input_value[1] then
+        gg.toast("输入无效")
+        return
+    end
     
-本地tmp，保存，编辑={}，{}，{{输入值[当地的tmp，保存，编辑={}，{}，{{input_value['2996'，'D'，假的}}当地的tmp，保存，编辑={}，{}，{{input_value['D'],假的，'D', 假的}}
-dofor_，vin ipairs(结果)做
-对于i=为I=1，#edit
-如果编辑[i][如果编辑[i][4] 然后
-table.insert(保存，{
-值=编辑[i][1]，1],
-标志=类型[编辑[i][3]]，3]],
-冻结=正确，正确,
-name="局内分数"，"局内分数",
-地址=v.address+tonumber(编辑[i][2])，2]),
+    local tmp, save, edit = {}, {}, {{input_value[1], '2996', 'D', false}}
+    for _, v in ipairs(results) do
+        for i = 1, #edit do
+            if edit[i][4] then
+                table.insert(save, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    freeze = true,
+                    name = "局内分数",
+                    address = v.address + tonumber(edit[i][2]),
                 })
-其他其他
-table.insert(tmp，{
-值=编辑[i][1]，1],
-标志=类型[编辑[i][3]]，3]],
-地址=v.address+tonumber(编辑[i][2])，2]),
+            else
+                table.insert(tmp, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    address = v.address + tonumber(edit[i][2]),
                 })
-结束结束
-结束结束
-结束结束
-如果#tmp>如果#tmp>0，则或#节省>0，则如果#tmp>然后
-gg.setValues(tmp)
-gg.setValues(保存)
-gg.addListItems(保存)
-gg.toast(string.format("成功修改%d个数值"，#tmp+#save))"成功修改%d个数值"，#tmp+#save))
-其他其他
-GG.土司("开启失败")"开启失败")
-结束结束
-结束
+            end
+        end
+    end
+    if #tmp > 0 or #save > 0 then
+        gg.setValues(tmp)
+        gg.setValues(save)
+        gg.addListItems(save)
+        gg.toast(string.format("成功修改%d个数值", #tmp + #save))
+    else
+        gg.toast("开启失败")
+    end
+end
 
-功能C_b()-- 局内等级
-本地标志=类型['D']当地的标志=类型['D']
-gg.clearResults()
-gg.setRanges(32)32)
-gg.searchNumber("1144602624"，标志)"1144602624"，标志)
-本地计数=gg.getResultsCount()当地的count=gg.getResultsCount()
-本地结果=gg.getResults(count)当地的results=gg.getResults(count)
-gg.clearResults()
-本地备件={{当地的备用={{44, -'D'，类型['D']}}当地的备用={{44, -'D'，类型[
-对于i=为I=1，#备用做 为我=
-本地tmp，resultsTmp={}，{}当地的tmp，resultsTmp={}，{}
-for_，v为_，v在...内ipairs(结果)做
-table.insert(tmp，{
-flags=备用[i][3]或旗帜，或旗帜，
-地址=v.address+tonumber(备用[i][2])，2]),
+function c_b() -- 局内等级
+    local FLAGS = Types['D']
+    gg.clearResults()
+    gg.setRanges(32)
+    gg.searchNumber("1144602624", FLAGS)
+    local count = gg.getResultsCount()
+    local results = gg.getResults(count)
+    gg.clearResults()
+    local spare = {{'1067366482', -44, Types['D']}}
+    for i = 1, #spare do
+        local tmp, resultsTmp = {}, {}
+        for _, v in ipairs(results) do
+            table.insert(tmp, {
+                flags = spare[i][3] or FLAGS,
+                address = v.address + tonumber(spare[i][2]),
             })
-结束
-tmp=gg.getValues(tmp)
-对于i，v在...内ipairs(tmp)做
-如果v.value==备用[i][1]，则
-table.insert(结果Tmp，结果[ii])
-结束
-结束
-results=resultsTmp
-结束
+        end
+        tmp = gg.getValues(tmp)
+        for ii, v in ipairs(tmp) do
+            if v.value == spare[i][1] then
+                table.insert(resultsTmp, results[ii])
+            end
+        end
+        results = resultsTmp
+    end
     
 
-本地输入_值=gg.prompt({'输入1-79，改完之后升到下一级才会刷新修改的等级。 等3级技能解锁以后再改，否则技能解锁不了'}，{}，{'数字'})
-如果不是input_value，则
-GG.土司("操作已取消")
-返回
-结束
+    local input_value = gg.prompt({'输入1-79，改完之后升到下一级才会刷新修改的等级。等3级技能解锁以后再改，否则技能解锁不了'}, {}, {'number'})
+    if not input_value then
+        gg.toast("操作已取消")
+        return
+    end
     
 
-如果不是input_value[1]，则
-GG.土司("输入无效")
-返回
-结束
+    if not input_value[1] then
+        gg.toast("输入无效")
+        return
+    end
     
-本地tmp，保存，编辑={}，{}，{{输入值[1]，'-80'，'D'，假的}}
-for_，v在……内ipairs(结果)做
-对于i=1，#edit做
-如果编辑[i][4]，则
-table.insert(保存，{
-值=编辑[i][1]，
-flags=类型[edit[i][3]]，
-冻结=正确，
-姓名="局内等级"，
-地址=v.address+tonumber(编辑[i][2])，
+    local tmp, save, edit = {}, {}, {{input_value[1], '-80', 'D', false}}
+    for _, v in ipairs(results) do
+        for i = 1, #edit do
+            if edit[i][4] then
+                table.insert(save, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    freeze = true,
+                    name = "局内等级",
+                    address = v.address + tonumber(edit[i][2]),
                 })
-其他
-table.insert(tmp，{
-值=编辑[i][1]，
-flags=类型[edit[i][3]]，
-地址=v.address+tonumber(编辑[i][2])，
+            else
+                table.insert(tmp, {
+                    value = edit[i][1],
+                    flags = Types[edit[i][3]],
+                    address = v.address + tonumber(edit[i][2]),
                 })
-结束
-结束
-结束
-如果#tmp>0或#节省>0，则
-gg.setValues(tmp)
-gg.setValues(保存)
-gg.addListItems(保存)
-gg.toast(string.format("成功修改%d个数值"，#tmp+#save))
-其他
-GG.土司("开启失败")
-结束
-结束
+            end
+        end
+    end
+    if #tmp > 0 or #save > 0 then
+        gg.setValues(tmp)
+        gg.setValues(save)
+        gg.addListItems(save)
+        gg.toast(string.format("成功修改%d个数值", #tmp + #save))
+    else
+        gg.toast("开启失败")
+    end
+end
 
-函数C_combined()--资源修改
-本地标志=类型[‘D’]
+function c_combined() --资源修改
+    local FLAGS = Types['D']
     gg.clearResults()
     gg.setRanges(32)
     gg.searchNumber("-579838658", FLAGS)
@@ -707,3 +1067,21 @@ while true do
         _ENV[fun_list[#fun_list]]()
     end
 end  
+ --结束 
+  end
+
+
+
+function maine()
+  while true do
+    if gg.isVisible(true) then
+      XGCK = 1
+      gg.setVisible(false)
+    end
+    gg.clearResults()
+    if XGCK == 1 then
+      main()
+    end
+  end
+end
+maine()
