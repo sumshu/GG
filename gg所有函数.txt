@@ -1,0 +1,1721 @@
+--第一章
+
+--列出表内所有参数table.concat
+
+gg.multiChoice  弹出多选窗口
+addListItems()：添加项目到列表中
+alert():警告框
+BUILD:建立
+bytes():字节
+CACHE_DIR:gg
+choice():选择、选定
+clearList():清除列表
+clearResults():清除结果
+copyMemory():复制数据、内存
+copyText():将文本复制到剪贴板
+dumpMemory():丢、转到内存
+editAll():编辑所有
+EXT_CACHE_DIR:缓存目录
+EXT_FILES_DIR:文件目录
+FILES_DIR:文件夹目录
+FREEZE_IN_RANGE:冻结在这个范围里
+FREEZE_MAY_DECREASE:冻结可以减少的值
+FREEZE_MAY_INCREASE:冻结可以增加的值
+FREEZE_NORMAL:冻结正常、常态的值
+os.remove删除文件
+--第二章
+
+getFile():获取文件名
+getLine():获取行数
+getListItems():
+getLocale():获取地点~~~
+getRanges():获取内存区域内的
+getRangesList():获取内存区域列表
+getResultCount():获取结果计数
+getResults():获取结果并加载
+getSpeed():获取加速
+getTargetInfo():获取目标信息
+getTargetPackage():获取进程包名
+getValues():获取值
+getValuesRange():获取值的范围
+gotoAddress():转到内存地址
+isPackageInstalled():检查包名安装
+isProcessPaused():进程是否暂停
+isVisible():UI是否可见
+LOAD_APPEND:加载附加
+LOAD_VALUES:加载值
+LOAD_VALUES_FREEZE:加载值冻结
+loadList():加载列表
+multiChoice():多种选择
+PACKAGE:包名
+processKill():杀死、结束进程
+
+--第三章
+
+removeListItems():删除列表中的项目
+removeResults():移除列表中的结果
+require():gg
+SAVE_AS_TEXT:保存as？文件
+saveList():保存列表
+searchAddress():搜索地址
+processPause():暂停进程
+processResume():恢复进程
+processToggle():切换进程
+prompt():提示
+
+--第四章
+
+skipRestoreState():跳跃恢复声明?
+sleep():休眠
+startFuzzy():开始模糊搜索
+timeJump():时间跳跃
+toast():显示消息
+searchFuzzy():未知搜索
+searchNumber():指定数值搜索
+setRanges():设置范围
+setSpeed():设置速度
+setValues():设置值
+
+
+--时间
+
+%a  星期简写
+%A  星期大写
+%b  月份简写
+%B  月份大写
+%c  日期时间
+%d  月份天数
+%H  小时[24进制]
+%I  小时[12进制]
+%j  年中第几天
+%m  月份
+%M 分钟
+%p  am或pm
+%S  秒数
+%w  星期
+%W  第几周
+%x  日期
+%X  时间
+%y  两位数的年份
+%Y 完整的年份
+%z  时区
+%% 百分号
+
+
+----总共修改多少条数据
+
+sl=gg.editAll('',gg.TYPE_FLOAT)
+gg.toast("开启成功共修改"..sl.."条数据")
+
+
+
+
+
+
+登录
+✔️脚本内存:   CPP格式 如下一模一样
+Jh内存 gg.REGION_JAVA_HEAP 数字值 2  同AndLua+格式 序号7
+Ch内存 gg.REGION_C_HEAP 数字值 1  同AndLua+格式 序号2
+Ca内存 gg.REGION_C_ALLOC 数字值 4  同AndLua+格式 序号3
+Cd内存 gg.REGION_C_DATA 数字值 8  同AndLua+格式 序号4
+Cb内存 gg.REGION_C_BSS 数字值 16  同AndLua+格式 序号1
+Ps内存 gg.REGION_PPSSPP 数字值 262144  同AndLua+格式 序号暂无
+A内存 gg.REGION_ANONYMOUS 数字值 32  同AndLua+格式 序号8
+J内存 gg.REGION_JAVA 数字值 65536  同AndLua+格式 序号暂无
+S内存 gg.REGION_STACK 数字值 64  同AndLua+格式 序号5
+As内存 gg.REGION_ASHMEM 数字值 524288  同AndLua+格式 序号暂无
+V内存 gg.REGION_VIDEO 数字值 1048576  同AndLua+格式 序号6
+O内存 gg.REGION_OTHER 数字值 -2080896  同AndLua+格式 序号暂无
+B内存 gg.REGION_BAD 数字值 131072  同AndLua+格式 序号6
+Xa内存 gg.REGION_CODE_APP 数字值 16384  同AndLua+格式 序号9
+Xs内存 gg.REGION_CODE_SYS 数字值 32768  同AndLua+格式 序号10
+✔️数据类型:   CPP格式 如下一模一样
+A类型 gg.TYPE_AUTO 数字值 127  AndLua+格式 此格式无
+B类型 gg.TYPE_BYTE 数字值 1  AndLua+格式 单字节byte
+E类型 gg.TYPE_DOUBLE 数字值 64  AndLua+格式 双精度浮点数
+D类型 gg.TYPE_DWORD 数字值 4  AndLua+格式 4字节整数
+F类型 gg.TYPE_FLOAT 数字值 16  AndLua+格式 单精度浮点数
+Q类型 gg.TYPE_QWORD 数字值 32  AndLua+格式 8字节长整数
+W类型 gg.TYPE_WORD 数字值 2  AndLua+格式 2字节整数
+X类型 gg.TYPE_XOR 数字值 8  AndLua+格式 此格式无
+HEX_L AndLua+格式 小端16进制
+HEX_B AndLua+格式 大端16进制
+✔️脚本制作初步格式:
+函数/功能 function
+弹出提示窗口 gg.alert
+屏幕中下方提示 gg.toast(内容)
+弹出带有控件的提示窗 gg.prompt
+弹出单选列表窗口 gg.choice
+清除搜索结果 gg.clearResults
+修改搜索结果 gg.editAll
+获取当前脚本所在目录 gg.getFile
+获得搜索结果 gg.getResults
+获得搜索结果数量 gg.getResultCount
+设置搜索内存 gg.setRanges
+判断gg界面是否可见 gg.isVisible
+弹出多选列表窗口 gg.multiChoice
+结束当前选定应用 gg.processKill
+搜索数据 gg.searchNumber
+设置gg界面是否可见 gg.setVisible
+读取行数 getline()
+获取地值 getlocale0
+获取内存区域内 getRanges()
+获取内存区域列表 getRangeslist
+获取计算结果 getResultCount
+或许结果并加载 getResultso
+获取加速 getSpeedo
+获取目标信息 getTargetInfo
+获取过包名gg内存 getTargetPackage0
+脚本时间提示 gg.alert(os.date("%Y年-%m月-%d日 %H时:%M分:%S秒")) 本地时间总和 os.clock()
+结束 end
+✔
+%a  星期简写
+%A  星期大写
+%b  月份简写
+%B  月份大写
+%c  日期时间
+%d  月份天数
+%H  小时[24进制]
+%I  小时[12进制]
+%j  年中第几天
+%m  月份
+%M 分钟
+%p  am或pm
+%S  秒数
+%w  星期
+%W  第几周
+%x  日期
+%X  时间
+%y  两位数的年份
+%Y 完整的年份
+%z  时区
+%% 百分号
+✔
+ddListItems()-----------添加项目到列表中
+alert()-----------警告框
+BUILD-----------建立
+bytes()-----------字节
+CACHE_DIR-----------缓存_显示文件列表
+choice()-----------选择、选定
+clearList()-----------清除列表
+clearResults()-----------清除结果
+copyMemory()-----------复制数据、内存
+copyText()-----------将文本复制到剪贴板
+dumpMemory()-----------丢、转到内存
+editAll()-----------编辑所有
+EXT_CACHE_DIR-----------缓存目录
+EXT_FILES_DIR-----------文件目录
+FILES_DIR-----------文件夹目录
+FREEZE_IN_RANGE-----------冻结在这个范围里
+FREEZE_MAY_DECREASE-----------冻结可以减少的值
+FREEZE_MAY_INCREASE-----------冻结可以增加的值
+FREEZE_NORMAL-----------冻结正常、常态的值
+getFile()-----------获取文件名
+getLine()-----------获取行数
+getListItems()-----------获取列表项目
+getLocale()-----------获取地点~~~
+getRanges()-----------获取内存区域内的
+getRangesList()-----------获取内存区域列表
+getResultCount()-----------获取结果计数
+getResults()-----------获取结果并加载
+getSpeed()-----------获取加速
+getTargetInfo()-----------获取目标信息
+getTargetPackage()-----------获取进程包名
+getValues()-----------获取值
+getValuesRange()-----------获取值的范围
+gotoAddress()-----------转到内存地址
+isPackageInstalled()-----------检查包名安装
+isProcessPaused()-----------进程是否暂停
+isVisible()-----------UI是否可见
+LOAD_APPEND-----------加载附加
+LOAD_VALUES-----------加载值
+LOAD_VALUES_FREEZE-----------加载值冻结
+loadList()-----------加载列表
+multiChoice()-----------多种选择
+PACKAGE-----------包名
+processKill()-----------杀死、结束进程
+processPause()-----------暂停进程
+processResume()-----------恢复进程
+processToggle()-----------切换进程
+prompt()-----------提示
+REGION_ANONYMOUS-----------gg[以下是内存范围]
+REGION_ASHMEM-----------gg        
+REGION_BAD-----------gg                  
+REGION_C_ALLOC-----------gg        
+REGION_C_BSS-----------gg
+REGION_C_DATA-----------gg
+REGION_C_HEAP-----------gg
+REGION_CODE_APP-----------gg
+REGION_CODE_SYS-----------gg
+REGION_JAVA-----------gg
+REGION_JAVA_HEAP-----------gg
+REGION_OTHER-----------gg
+REGION_PPSSPP-----------gg
+REGION_STACK-----------gg[到这里是内存范围]
+removeListItems()-----------删除列表中的项目
+removeResults()-----------移除列表中的结果
+require()-----------gg
+SAVE_AS_TEXT-----------保存as？文件
+saveList()-----------保存列表
+searchAddress()-----------搜索地址
+searchFuzzy()-----------未知搜索
+searchNumber()-----------指定数值搜索
+setRanges()-----------设置范围
+setSpeed()-----------设置速度
+setValues()-----------设置值
+setVisible()-----------设置可见
+SIGN_EQUAL-----------标志、标记相同
+SIGN_FUZZY_EQUAL-----------标记_未知_相同
+SIGN_FUZZY_GREATER-----------更大
+SIGN_FUZZY_LESS-----------更小
+SIGN_FUZZY_NOT_EQUAL-----------标记_未知_不_相同
+SIGN_GREATER_OR_EQUAL-----------标记_更大_或_相同
+SIGN_LESS_OR_EQUAL-----------标记_未知_更小_或_相同
+SIGN_NOT_EQUAL-----------标记_不_相同
+skipRestoreState()-----------跳跃恢复状态
+sleep()-----------休眠
+startFuzzy()-----------开始模糊搜索
+timeJump()-----------时间跳跃
+toast()-----------显示弹窗消息(自动消失)
+TYPE_AUTO-----------类型全部
+TYPE_BYTE-----------类型字节
+TYPE_DOUBLE-----------类型双浮点
+TYPE_DWORD-----------类型四字节
+TYPE_FLOAT-----------类型浮点数
+TYPE_QWORD-----------类型
+TYPE_WORD-----------类型单字
+TYPE_XOR-----------类型
+VERSION-----------版本
+VERSION_INT-----------国际版本
+✔
+gg.alert(内容)
+--第①种
+gg.alert(内容1,按钮1)
+--第②种
+gg.alert(内容1,按钮1,按钮2)
+--第③种
+gg.alert(内容1,按钮1,按钮2,按钮3)
+--第④种
+✔
+gg.searchNumber("2593773682", gg.TYPE_FLOAT, false, gg.SIGN_EQUAL, 0, -1)
+--[[259377368是搜索内容,TYPE是搜索类型]]
+✔
+gg.editAll("修改数值",类型)
+示例：
+gg.editAll("2593773682",gg.TYPE_DOUBLE)--2593773682是修改的数值，TYPE是类型
+✔
+a = gg.prompt({"文字信息"},
+{[1]=2593773682--[[编辑框文字]]},
+{[1]="number"})[1]
+gg.toast("你输入了"..a)
+
+
+
+
+Lua中的常用函数库汇总
+
+“"r" 以只读方式打开文件，该文件必须存在。
+"w" 打开只写文件，若文件存在则文件长度清为0，即该文件内容会消失。若文件不存在则建立该文件。
+"a" 以附加的方式打开只写文件。若文件不存在，则会建立该文件，如果文件存在，写入的数据会被加到文件尾，即文件原先的内容会被保留。（EOF符保留）
+"r+" 以可读写方式打开文件，该文件必须存在。
+"w+" 打开可读写文件，若文件存在则文件长度清为零，即该文件内容会消失。若文件不存在则建立该文件。
+"a+" 与a类似，但此文件可读可写
+"b" 二进制模式，如果文件是二进制文件，可以加上b”
+
+
+这篇文章主要介绍了Lua中的常用函数库汇总,本文罗列了lua库函数、数学函数、字符串库、表函数、Bit Functions,需要的朋友可以参考下
+
+lua库函数
+
+这些函数都是Lua编程语言的一部分, 点击这里了解更多.
+
+assert(value) - 检查一个值是否为非nil, 若不是则(如果在wow.exe打开调试命令)显示对话框以及输出错误调试信息
+
+collectgarbage() - 垃圾收集器. (新增于1.10.1)
+
+date(format, time) - 返回当前用户机器上的时间.
+
+error("error message",level) - 发生错误时,输出一条定义的错误信息.使用pcall() (见下面)捕捉错误.
+
+gcinfo() - 返回使用中插件内存的占用量(kb)以及当前垃圾收集器的使用量(kB).
+
+getfenv(function or integer) - 返回此表已获取函数的堆栈结构或者堆栈等级
+
+getmetatable(obj, mtable) - 获取当前的元表或者用户数据对象.
+
+loadstring("Lua code") - 分析字符串中的lua代码块并且将结果作为一个函数返回
+
+next(table, index) - 返回下一个key,一对表值.允许遍历整个表
+
+pcall(func, arg1, arg2, ...) - 受保护调用. 执行函数内容，同时捕获所有的异常和错误.
+
+select(index, list) - 返回选择此列表中的商品数值.或者是此件物品在列表中的索引值
+
+setfenv(function or integer, table) - 设置此表已获取函数的堆栈结构或者堆栈等级
+
+setmetatable(obj, mtable) - 设置当前表的元表或者用户数据对象
+
+time(table) - 返回从一个unix时间值
+
+type(var) - 判断当前变量的类型, "number", "string", "table", "function" 或者 "userdata".
+
+unpack(table) - 解压一个表.返回当前表中的所有值.
+
+xpcall(func, err) - 返回一个布尔值指示成功执行的函数以及调用失败的错误信息.另外运行函数或者错误的返回值
+
+数学函数
+
+这些表函数同样可以参考Lua函数库(他们都是以math.开头, 详情参阅数学库了解更多信息).
+
+三角函数是没有参考的, 包括角度->弧度的转换.暴雪的版本使用角度.而Lua的标准数学库则使用的弧度.
+
+abs(value) - 返回当前数值的绝对值
+
+acos(value) - 返回此角度值的弧余弦值.
+
+asin(value) - 返回此角度值的弧正弦值
+
+atan(value) - 返回此角度值的弧正切值
+
+atan2(y, x) - 在角度中, 返回Y/X的弧正切值.
+
+ceil(value) - 返回一个整数, 不管小数点后面是多少, 整数部分都进1
+
+cos(degrees) - 返回角度的余弦值
+
+deg(radians) - 弧度转换角度
+
+exp(value) - 返回此值的指数值
+
+floor(value) - 返回此值的整数值
+
+frexp(num) - 返回当前数字小数点后的数值以及小数点后的位数
+
+ldexp(value, 倍数) - 输出此数值的倍数
+
+log(value) - 返回此值的自然对数 (以e为底数)
+
+log10(value) - 返回以10为底数的值
+
+max(value[, values...]) - 在一堆值中查找最大值
+
+min(value[,values...]) - 在一堆值中查找最小值
+
+mod(value,modulus) - 返回此值的余数
+
+rad(degrees) - 角度转换弧度
+
+random([ [lower,] upper]) - 返回一个随机数字 (可选界限为整数值)
+
+randomseed(seed) - 为伪随机数字生成器设定种子
+
+sin(degrees) - 返回当前角度的正弦值
+
+sqrt(value) - 返回数值的平方根值(比如100的平方根为10)
+
+tan(degrees) - 返回当前角度的正切值
+
+字符串库
+
+这些表函数同样可以参考Lua字符串库(他们都是以string.开头, 参考字符串库了解更多信息)
+
+format(formatstring[, value[, ...]]) - 格式化字符串
+
+gsub(string,pattern,replacement[, limitCount]) - 全局替换
+
+strbyte(string[, index]) - 转换字符串为整数值(可以指定某个字符).
+
+strchar(asciiCode[, ...]) - 转换整数为相对应的字符
+
+strfind(string, pattern[, initpos[, plain]]) - 在一个指定的目标字符串中搜索指定的内容(第三个参数为索引),返回其具体位置.
+
+strlen(string) - 返回当前字符串的字符数
+
+strlower(string) - 将字符串的字母转换为小写格式
+
+strmatch(string, pattern[, initpos]) - 与strfind不同的是,macth返回的是具体值,而find返回的是此值的位置
+
+strrep(seed,count) - 返回一个字符串种子副本的个数
+
+strsub(string, index[, endIndex]) - 返回字符串指定位置的值.
+
+strupper(string) - 将字符串的字母转为大写格式
+
+tonumber(arg[, base]) - 若参数能转为数字则返回一个数值.可以指定转换的类型.默认为十进制整数
+
+tostring(arg) - 转换参数为字符串
+
+下面的字符串函数是wow独有的
+
+strtrim(string) - 去除字符串前后空格
+
+strsplit(delimiter, string) - 分割字符串
+
+strjoin(delimiter, string, string[, ...]) - 根据定界符将字符串连接起来
+
+ 表函数
+
+这些表函数同样可以参考Lua表库 (他们都是以"table.开头", 查阅Table库 f了解更多信息).
+
+也知道, 很多表都被设计为只有数字索引, 开始于1并且没有结尾(如like {[1] = "foo", [3] = "bar"} --- [2]是不存在的所以为nil值).工作时，与任何其他表并没有差别，但很可能会产生意想不到的结果. 在编写lua中, 这个也就是通常所说的bug
+
+foreach(table,function) - 为表中的每个元素执行函数
+
+foreachi(table,function) - 为表中的每个元素执行函数, 按顺序访问(不推荐, 可以使用ipairs代替)
+
+getn(table) - 当作为一个聊表时, 返回当前表的大小. 现在已经废弃了, 你可以直接使用#符号.使用#(table)代替table.getn(table)
+
+ipairs(table) - 返回一个迭代型整数遍历表。
+
+pairs(table) - 返回一个迭代遍历表
+
+sort(table[, comp]) - 对一个数组进行排序, 还可以指定一个可选的次序函数
+
+tinsert(table[, pos], value) - 将一个元素插入指定的位置(默认在表的最后)
+
+tremove(table[, pos]) - 删除指定位置的元素(默认表最后一个)
+
+Bit Functions
+
+魔兽世界包含了Lua BitLib库(他们都是以 "bit."开头). 与C的位运算相同.位运算库并非Lua标准函数库的一部分, 但是在WoW 1.9中得到了应用
+
+bit.bnot(a) - 返回一个a的补充
+
+bit.band(w1,...) - 返回w的位与
+
+bit.bor(w1,...) - 返回w的位或
+
+bit.bxor(w1,...) - 返回w的位异或
+
+bit.lshift(a,b) - 返回a向左偏移到b位
+
+bit.rshift(a,b) - 返回a逻辑右偏移到b位
+
+bit.arshift(a,b) - 返回a算术偏移到b位
+
+bit.mod(a,b) - 返回a除以b的整数余数
+
+
+
+
+
+日期与时间
+
+在Lua库中提供了两个非常重要的日期和时间函数，分别是time和date。那就先从time函数开始。
+
+time
+
+如果不带任何参数调用time函数，它会以数字形式返回当前的日期和时间。返回的数值表示当前时间到某个特定时间的秒数，在不同的系统上，这个特定的时间是不一样的。如果用一个table作为参数调用它，它会返回一个数字，表示该table中所描述的日期和时间。这种table具有以下有效字段：
+
+year	一个完整的年份
+month	01-12
+day	01-31
+hour	00-23
+min	00-59
+sec	00-59
+isdst	一个布尔值，true表示夏令时
+前三个字段是必须要有的，比如：
+
+复制代码 代码如下:
+
+print(os.time()) -- 输出当前时间的描述
+print(os.time({year=2014,month=8,day=14}))
+date
+
+函数date是time的一个反函数，它可以将一个表示日期和时间的数字转换成某些高级的表现形式。其第一个参数是格式字符串，指定了期望的表示形式；第二个参数是日期和时间的数字，默认为当前日期和时间。例如：
+
+复制代码 代码如下:
+
+local tbCurrentTime = os.date("*t")
+ 
+for k, v in pairs(tbCurrentTime) do
+    print(k .. "=" .. tostring(v))
+end
+这样就会输出当天的时间，你运行以下代码看看。其实data函数没有多少需要说的。只是data函数的第一个参数的格式种类是非常多的，可以去百度一下。我一般用一个*t就够了。但是了解一下其它的也还不错。
+
+对于这里说到的time和date两个函数，一般time函数返回的描述不适合人去读，我们一般都是保存这个数字，在后台进行处理；对于date函数，它返回的内容适合人去读，所以，一般使用date返回的数据在UI上显示
+
+Lua是一个脚本语言, 使用这些函数来对你的数据结构进行比对是十分慢的. 除非你有一个非常大的数据库以及需要保护的RAM使用, 保存你的信息到几个或个别的变量中.
+GG函数
+ddListItems()-----------添加项目到列表中
+alert()-----------警告框
+BUILD-----------建立
+bytes()-----------字节
+CACHE_DIR-----------缓存_显示文件列表
+choice()-----------选择、选定
+clearList()-----------清除列表
+clearResults()-----------清除结果
+copyMemory()-----------复制数据、内存
+copyText()-----------将文本复制到剪贴板
+dumpMemory()-----------丢、转到内存
+editAll()-----------编辑所有
+EXT_CACHE_DIR-----------缓存目录
+EXT_FILES_DIR-----------文件目录
+FILES_DIR-----------文件夹目录
+FREEZE_IN_RANGE-----------冻结在这个范围里
+FREEZE_MAY_DECREASE-----------冻结可以减少的值
+FREEZE_MAY_INCREASE-----------冻结可以增加的值
+FREEZE_NORMAL-----------冻结正常、常态的值
+getFile()-----------获取文件名
+getLine()-----------获取行数
+getListItems()-----------获取列表项目
+getLocale()-----------获取地点~~~
+getRanges()-----------获取内存区域内的
+getRangesList()-----------获取内存区域列表
+getResultCount()-----------获取结果计数
+getResults()-----------获取结果并加载
+getSpeed()-----------获取加速
+getTargetInfo()-----------获取目标信息
+getTargetPackage()-----------获取进程包名
+getValues()-----------获取值
+getValuesRange()-----------获取值的范围
+gotoAddress()-----------转到内存地址
+isPackageInstalled()-----------检查包名安装
+isProcessPaused()-----------进程是否暂停
+isVisible()-----------UI是否可见
+LOAD_APPEND-----------加载附加
+LOAD_VALUES-----------加载值
+LOAD_VALUES_FREEZE-----------加载值冻结
+loadList()-----------加载列表
+multiChoice()-----------多种选择
+PACKAGE-----------包名
+processKill()-----------杀死、结束进程
+processPause()-----------暂停进程
+processResume()-----------恢复进程
+processToggle()-----------切换进程
+prompt()-----------提示
+REGION_ANONYMOUS-----------gg[以下是内存范围]
+REGION_ASHMEM-----------gg        
+REGION_BAD-----------gg                  
+REGION_C_ALLOC-----------gg        
+REGION_C_BSS-----------gg
+REGION_C_DATA-----------gg
+REGION_C_HEAP-----------gg
+REGION_CODE_APP-----------gg
+REGION_CODE_SYS-----------gg
+REGION_JAVA-----------gg
+REGION_JAVA_HEAP-----------gg
+REGION_OTHER-----------gg
+REGION_PPSSPP-----------gg
+REGION_STACK-----------gg[到这里是内存范围]
+removeListItems()-----------删除列表中的项目
+removeResults()-----------移除列表中的结果
+require()-----------gg
+SAVE_AS_TEXT-----------保存as？文件
+saveList()-----------保存列表
+searchAddress()-----------搜索地址
+searchFuzzy()-----------未知搜索
+searchNumber()-----------指定数值搜索
+setRanges()-----------设置范围
+setSpeed()-----------设置速度
+setValues()-----------设置值
+setVisible()-----------设置可见
+SIGN_EQUAL-----------标志、标记相同
+SIGN_FUZZY_EQUAL-----------标记_未知_相同
+SIGN_FUZZY_GREATER-----------更大
+SIGN_FUZZY_LESS-----------更小
+SIGN_FUZZY_NOT_EQUAL-----------标记_未知_不_相同
+SIGN_GREATER_OR_EQUAL-----------标记_更大_或_相同
+SIGN_LESS_OR_EQUAL-----------标记_未知_更小_或_相同
+SIGN_NOT_EQUAL-----------标记_不_相同
+skipRestoreState()-----------跳跃恢复状态
+sleep()-----------休眠
+startFuzzy()-----------开始模糊搜索
+timeJump()-----------时间跳跃
+toast()-----------显示弹窗消息(自动消失)
+TYPE_AUTO-----------类型全部
+TYPE_BYTE-----------类型字节
+TYPE_DOUBLE-----------类型双浮点
+TYPE_DWORD-----------类型四字节
+TYPE_FLOAT-----------类型浮点数
+TYPE_QWORD-----------类型
+TYPE_WORD-----------类型单字
+TYPE_XOR-----------类型
+VERSION-----------版本
+VERSION_INT-----------国际版本
+
+ .  任意字符
+ %s 空白符
+ %p 标点
+ %c 控制字符
+ %d 数字
+ %x 十六进制数
+ %z 代表0的字符
+ %a 字母
+ %l 小写字母
+ %u 大写字母
+ %w 字母数字
+字符类的大写形式代表相应集合的补集， 比如 %A 表示除了字母以外的字符集
+另外，* + - 三个，作为通配符分别表示：
+*： 匹配前面指定的 0 或多个同类字符， 尽可能匹配更长的符合条件的字串
++： 匹配前面指定的 1 或多个同类字符， 尽可能匹配更长的符合条件的字串
+-： 匹配前面指定的 0 或多个同类字符， 尽可能匹配更短的符合条件的字串
+gg.addListItems() --添加项目到列表中
+gg.alert() --弹窗 用法在()添加你想要的字
+gg. toast()--提示框 用法在()添加你想要的字
+gg.clearList() --清除保存列表 一般不怎么用
+gg.clearResults() --清除我们搜索结果 一般在功能内第一行可见
+gg.copyText() --将文本复制到剪贴板 用法 在()里面添加你想要别人复制的字
+gg.copyMemory() --复制数据、内存 一般来说不怎么用
+gg.getResults()--修改多少个数值 用法在()内添加数字为修改多少个数值
+gg.editAll() --编辑所有 一般和gg.getResults()一起用 用法在()添加你要修改为什么都数值
+gg.setRanges()--获取内存 用法在()填写你要获取的内存
+gg.processPause() --暂停进程
+gg.processResume()--恢复进程
+gg.processToggleo() --切换进程gg.searchFuzzy("0", gg.SIGN_FUZZY_NOT_EQUAL, gg.TYPE_DWORD | gg.TYPE_QWORD, 0, -1
+gg.processKill()--结束进程
+gg.removeListitems() --从保存的列表中删除项目
+gg.removeResults() --移除找到列表中的结果
+gg.saveList() --保存到列表
+gg.searchAddress() --搜索地址
+gg.getValues() --获取值
+gg.getValuesRange() --获取值的范围
+FREEZE_ IN _RANGE --冻结在这个范围里
+FREEZE_ MAY_ _DECREASE --冻结可以减少的值
+FREEZE_ MAY INCREASE --冻结可以增加的值
+gg.refineAddress()--gg.refineAddress("蒙版", -1, 类型, gg.SIGN_EQUAL, 0, -1)--蒙版改善
+gg.searchNumber()--gg.searchNumber("数值", 类型,false,gg.SIGN_EQUAL,0, -1)--指定数值搜索 可用于联合搜索与数值改善
+gg.multiChoice({--多选
+gg.choice({--单选
+时间公告
+  }, nil, "youker男神提醒您\n"..os.date(":现在的时间是%Y年-%m月-%d日 %H时:%M分:%S秒"))--上面的字 公告
+gg.alert(os.date("youker男神提醒您:当前开启功能时间为%Y年-%m月-%d日 %H时:%M分:%S秒⚡"))--弹窗
+gg.toast(os.date("⚡当前开启功能完成时间为%Y年-%m月-%d日 %H时:%M分:%S秒⚡"))--提示
+print("youker男神提醒您"..os.date(":现在的时间是%Y年-%m月-%d日 %H时:%M分:%S秒"))--退出脚本的字
+GG类型与范围
+①gg.setRanges(gg.REGION_VIDEO) 相当于gg.setRanges(1048576) 
+②gg.TYPE_DWORD相当于4,  gg.TYPE_FLOAT相当于16
+
+--------内存范围---------↓↓↓
+	['REGION_ANONYMOUS'] = 32,--A内存
+	['REGION_ASHMEM'] = 524288,--As内存
+	['REGION_BAD'] = 131072,--B内存
+	['REGION_CODE_APP'] = 16384,--Xa内存
+	['REGION_CODE_SYS'] = 32768,--Xs内存
+	['REGION_C_ALLOC'] = 4,--Ca内存
+	['REGION_C_BSS'] = 16,--Cb内存
+	['REGION_C_DATA'] = 8,--Cd内存
+	['REGION_C_HEAP'] = 1,--Ch内存
+	['REGION_JAVA'] = 65536,--J内存
+	['REGION_JAVA_HEAP'] = 2,--Jh内存
+	['REGION_OTHER'] = -2080896,--O内存
+	['REGION_PPSSPP'] = 262144,--Ps内存
+	['REGION_STACK'] = 64,--S内存
+	['REGION_VIDEO'] = 1048576,--V内存
+
+--------数据类型---------↓↓↓
+	['TYPE_AUTO'] = 127,--A类型
+	['TYPE_BYTE'] = 1,--B类型
+	['TYPE_DOUBLE'] = 64,--E类型
+	['TYPE_DWORD'] = 4,--D类型
+	['TYPE_FLOAT'] = 16,--F类型
+	['TYPE_QWORD'] = 32,--Q类型
+	['TYPE_WORD'] = 2,--W类型
+	['TYPE_XOR'] = 8,--X类型
+	
+	由youker_男神挑选并且编写 函数来自官网 
+
+
+
+
+1. function：函数，功能
+2. gg.alert  弹出提示窗口
+3. gg.toast 屏幕下方弹出提示条( 会自动消失 )
+3. gg.prompt 弹出带有控件的提示窗口
+4. gg.choice 弹出单选列表窗口
+5. gg.clearResults 清除搜索结果
+6. gg.editAll 修改搜索结果
+7. gg.getFile 获取当前脚本所在目录
+8. gg.getResults 获取搜索结果
+9. gg.getResultCount 获取搜索结果数量
+10. gg.setRanges 设置搜索内存
+11. gg.isVisible 判断GG界面是否可见
+12. gg.multiChoice 弹出多选列表窗口
+13. gg.processKill 结束当前选定应用
+14. gg.searchNumber 搜索数据 (重要)
+15. gg.setVisible 设置GG界面是否可见
+16. getline()读取行数
+17. getlocale0荻取地值
+18. getRanges()洪取内存区域内的
+19. getRangeslist)荻取内存区域列表
+20. getResultCount)荻取結果計数
+21. getResultso :荻取結果井加載
+22. getSpeedo荻取加速
+23. getTargetInfo荻取目棕信息
+24. getTargetPackage0荻取迸程包名GG内存
+------------------------------------------------
+--------内存范围---------↓↓↓
+Jh内存:	['REGION_JAVA_HEAP'] = 2,
+Ch内存:	['REGION_C_HEAP'] = 1,
+Ca内存:	['REGION_C_ALLOC'] = 4,
+Cd内存:	['REGION_C_DATA'] = 8,
+Cb内存:	['REGION_C_BSS'] = 16,
+Ps内存:['REGION_PPSSPP'] = 262144,
+A内存:	['REGION_ANONYMOUS'] = 32,
+J内存:	['REGION_JAVA'] = 65536,
+S内存:	['REGION_STACK'] = 64,
+As内存:	['REGION_ASHMEM'] = 524288,
+V内存:	['REGION_VIDEO'] = 1048576,
+O内存	['REGION_OTHER'] = -2080896,
+B内存:	['REGION_BAD'] = 131072,
+Xa内存:	['REGION_CODE_APP'] = 16384,
+Xs内存:	['REGION_CODE_SYS'] = 32768,
+------------------------------------------------
+--------数据类型---------↓↓↓
+A类搜:	['TYPE_AUTO'] = 127,
+B类搜:	['TYPE_BYTE'] = 1,
+E类搜:	['TYPE_DOUBLE'] = 64,
+D类搜:	['TYPE_DWORD'] = 4,
+F类搜:	['TYPE_FLOAT'] = 16,
+Q类搜:	['TYPE_QWORD'] = 32,
+W类搜:	['TYPE_WORD'] = 2,
+X类搜:	['TYPE_XOR'] = 8,
+------------------------------------------------
+
+
+
+
+
+- a -
+addListItems() : 将项目添加到保存列表中
+
+alert() : 警告框
+按钮返回值:取消返回0，从右到左分别为1,2,3
+gg.alert('Script ended')
+-- Show alert with single 'ok' button
+gg.alert('Script ended', 'Yes')
+-- Show alert with single 'Yes' button
+gg.alert('A or B?', 'A', 'B')
+-- Show alert with two buttons
+gg.alert('A or C?', 'A', nil, 'C')
+-- Show alert with two buttons
+gg.alert('A or B or C?', 'A', 'B', 'C')
+-- Show alert with three buttons
+
+allocatePage() : 在目标进程中分配内存页(4KB)
+参数:'PROT_EXEC''PROT_NONE''PROT_READ''PROT_WRITE'
+print('allocatePage 1: ', string.format('0x%08x', gg.allocatePage()))
+print('allocatePage 2: ', string.format('0x%08x', gg.allocatePage(gg.PROT_READ | gg.PROT_EXEC)))
+print('allocatePage 3: ', string.format('0x%08x', gg.allocatePage(gg.PROT_READ | gg.PROT_WRITE)))
+print('allocatePage 4: ', string.format('0x%08x', gg.allocatePage(gg.PROT_READ)))
+print('allocatePage 5: ', string.format('0x%08x', gg.allocatePage(gg.PROT_READ | gg.PROT_WRITE, 0x12345)))
+- b -
+
+BUILD : 修改器内部数字版本
+print("GG build number: "..gg.BUILD)
+
+bytes() : 获取指定编码文本的文本字节
+参数:'ISO-8859-1', 'US-ASCII', 'UTF-16', 'UTF-16BE', 'UTF-16LE', 'UTF-8'
+print('UTF-16', gg.bytes('example', 'UTF-16LE'))
+- c -
+
+CACHE_DIR : 缓存目录
+文件系统上GameGuardian特定缓存目录的绝对路径。
+当设备的存储空间不足时，这些文件将首先被删除。无法保证何时删除这些文件。
+注意：您不应该依赖系统为您删除这些文件；对于缓存文件所占用的空间量，您应该始终具有合理的最大值（如1 MB），并在超过该空间时删除这些文件。如果你的应用需要更大的缓存（大于1 MB），你应该使用ext-cache-dir。
+放在内存中。其他应用程序不可见。用户可以清除。
+print("Cache dir: "..gg.CACHE_DIR)
+
+choice() : 单选
+print('1: ', gg.choice({'A', 'B', 'C', 'D'}))
+-- show list of 4 items
+print('2: ', gg.choice({'A', 'B', 'C', 'D'}, 2))
+-- show list of 4 items with selected 2 item
+print('3: ', gg.choice({'A', 'B', 'C', 'D'}, 3, 'Select letter:'))
+-- show list of 4 items with selected 3 item and message
+print('4: ', gg.choice({'A', 'B', 'C', 'D'}, nil, 'Select letter:'))
+-- show list of 4 items without selection and message
+
+clearList() : 清除保存列表
+
+clearResults() : 清除搜索结果
+
+copyMemory() : 复制内存
+print('copyMemory:', gg.copyMemory(0x9000, 0x9010, 3))
+-- copies 3 bytes 0x9000-0x9002 to 0x9010-0x9012
+
+copyText() : 将文本复制到剪贴板
+参数:布尔值  
+参数作用:是否使用固定区域设置特定的分隔符
+gg.copyText('1,234,567.890', true)  -- Will copy '1 234 567,890'
+gg.copyText('1,234,567.890', false) -- Will copy '1,234,567.890'
+- d -
+
+dumpMemory() : 内存转储到磁盘文件
+print('dumpMemory:', gg.dumpMemory(0x9000, 0x9010, '/sdcard/dump'))
+-- dump at least one memory page into the dir '/sdcard/dump'
+- e -
+
+editAll() : 编辑搜索结果
+gg.searchNumber('10', gg.TYPE_DWORD)
+gg.getResults(5)
+gg.editAll('15', gg.TYPE_DWORD)
+-- with float:
+gg.searchNumber('10.1', gg.TYPE_FLOAT)
+gg.getResults(5)
+gg.editAll('15.2', gg.TYPE_FLOAT)
+-- with XOR mode
+gg.searchNumber('10X4', gg.TYPE_DWORD)
+gg.getResults(5)
+gg.editAll('15X4', gg.TYPE_DWORD)
+
+EXT_CACHE_DIR : 
+主共享/外部存储设备上GameGuardian特定目录的绝对路径，GameGuardian可以在其中放置其拥有的缓存文件。
+如果共享存储当前不可用，则可能返回与cache_dir相同的值。通常放在外部存储器中。其他应用程序可见。用户可以清除。
+
+EXT_FILES_DIR : 
+主共享/外部存储设备上目录的绝对路径，GameGuardian可以在其中放置其拥有的持久文件。
+如果共享存储当前不可用，则可能返回与文件目录相同的值。通常放在外部存储器中。其他应用程序可见。
+
+EXT_STORAGE : 
+主共享/外部存储设备
+print("External storage: "..gg.EXT_STORAGE)
+local file = io.open(gg.EXT_STORAGE.."/test_log.txt", "w")
+file:write("This is log file")
+file:close()
+
+- f -
+
+FILES_DIR : 
+保存gameguardian文件的目录的路径。
+放在内存中。其他应用程序不可见
+
+保存列表中freezetype的状态
+[FREEZE_IN_RANGE : 冻结范围
+FREEZE_MAY_DECREASE : 冻结可以减少的值
+FREEZE_MAY_INCREASE : 冻结可以增加的值
+FREEZE_NORMAL : 冻结正常值
+]
+- g -
+
+getFile() : 获取当前脚本绝对路径名称
+
+getLine() : 获取行数
+
+getListItems() : 获取保存列表
+local r = gg.getListItems()
+print('Items: ', r)
+print('First item: ', r[1])
+print('First item address: ', r[1].address)
+print('First item value: ', r[1].value)
+print('First item type: ', r[1].flags)
+print('First item name: ', r[1].name)
+print('First item freeze: ', r[1].freeze)
+print('First item freeze type: ', r[1].freezeType)
+print('First item freeze from: ', r[1].freezeFrom)
+print('First item freeze to: ', r[1].freezeTo)
+
+getLocale() : 获取手机语言
+print(gg.getLocale())
+--zh_CN
+
+getRanges() : 获取内存范围
+
+getRangesList() : 获取选定进程的内存范围列表
+带有内存范围的列表的表。每个元素都是一个包含字段的表：
+state, start, end, type, name, internalName.
+状态，开始，结束，类型，名字，内部名字
+print(gg.getRangesList())
+print(gg.getRangesList('libc.so'))
+print(gg.getRangesList('lib*.so'))
+print(gg.getRangesList('^/data/'))
+print(gg.getRangesList('.so$'))
+
+getResults() : 获取搜索结果列表
+gg.clearResults()
+gg.startFuzzy(gg.TYPE_AUTO)
+local r = gg.getResults(5)
+print('First 5 results: ', r)
+print('First result: ', r[1])
+print('First result address: ', r[1].address)
+print('First result value: ', r[1].value)
+print('First result type: ', r[1].flags)
+r = gg.getResults(3, 2)
+print('Skip 2 items and get next 3: ', r)
+r = gg.getResults(3, nil, 0x80000000, 0xF0000000)
+print('Address between 0x80000000 and 0xF0000000: ', r)
+r = gg.getResults(3, nil, nil, nil, 23, 45)
+print('Value between 23 and 45: ', r)
+r = gg.getResults(3, nil, nil, nil, nil, nil, gg.TYPE_DWORD | gg.TYPE_FLOAT)
+print('Dword or Float: ', r)
+r = gg.getResults(3, nil, nil, nil, nil, nil, nil, '0.5')
+print('Only with fractional part equal 0.5: ', r)
+r = gg.getResults(3, nil, nil, nil, nil, nil, nil, '!0.0')
+print('Only with fractional part not equal 0.0: ', r)
+r = gg.getResults(3, nil, nil, nil, nil, nil, nil, nil, gg.POINTER_READ_ONLY)
+print('Only pointers to read-only memory: ', r)
+
+getResultsCount() : 获取全部搜索结果的数量
+
+getSpeed() : 获取加速速度
+
+getTargetInfo() : 获取目标信息
+如果可能，获取包含有关所选进程的信息的表。
+阅读Android中的packageinfo和applicationinfo，了解每个字段的含义。
+-- check for game version
+local v = gg.getTargetInfo()
+if v.versionCode ~= 291 then
+    print('This script only works with game version 291. You have game version ', v.versionCode, ' Please install version 291 and try again.')
+    os.exit()
+end
+
+getTargetPackage() : 获取目标进程包名
+
+getValues() : 获取向列表的值
+gg.searchNumber('10', gg.TYPE_DWORD)
+local r = gg.getResults(5) -- load items
+r = gg.getValues(r) -- refresh items values
+print('First 5 results: ', r)
+print('First result: ', r[1])
+print('First result address: ', r[1].address)
+print('First result value: ', r[1].value)
+print('First result type: ', r[1].flags)
+local t = {}
+t[1] = {}
+t[1].address = 0x18004030 -- some desired address
+t[1].flags = gg.TYPE_DWORD
+t[2] = {}
+t[2].address = 0x18004040 -- another desired address
+t[2].flags = gg.TYPE_BYTE
+t = gg.getValues(t)
+print(t)
+
+getValuesRange() : 获取传递值表的内存范围
+print('1: ', gg.getValuesRange({0x9000, 0x9010, 0x9020, 0x9030}))
+-- table as a list of addresses
+gg.searchNumber('10', gg.TYPE_DWORD)
+local r = gg.getResults(5)
+print('2: ', r, gg.getValuesRange(r))
+-- table as a list of tables with the address field
+
+gotoAddress() : 跳转到地址
+- i -
+
+isPackageInstalled() : 检查是否安装指定包名应用
+print('Game installed:', gg.isPackageInstalled('com.blayzegames.iosfps'))
+
+isProcessPaused() : 获取进程是否暂停
+布尔值
+
+isVisible() : 检查界面是否显示
+布尔值
+- l -
+loadlist的标志:[
+LOAD_APPEND : 添加到列表
+LOAD_VALUES : 加载值
+LOAD_VALUES_FREEZE : 加载冻结值
+]
+
+loadList() : 加载文件
+print('loadList:', gg.loadList('/sdcard/Notes/gg.victim.txt'))
+print('loadList:', gg.loadList('/sdcard/Notes/gg.victim.txt', 0))
+print('loadList:', gg.loadList('/sdcard/Notes/gg.victim.txt', gg.LOAD_APPEND))
+print('loadList:', gg.loadList('/sdcard/Notes/gg.victim.txt', gg.LOAD_VALUES_FREEZE))
+print('loadList:', gg.loadList('/sdcard/Notes/gg.victim.txt', gg.LOAD_APPEND | gg.LOAD_VALUES))
+
+loadResults() : 从变量加载搜索结果列表
+gg.searchNumber('10', gg.TYPE_DWORD)
+local r = gg.getResults(5)
+gg.clearResults()
+gg.searchNumber('9',4)
+local r1 = gg.getResults(7)
+print('load first 5 results: ', gg.loadResults(r))
+- m -
+
+makeRequest() : 
+通过HTTP或HTTPS执行get或post请求。
+第一次调用该函数时，会要求用户访问互联网。为每个脚本运行请求一个。如果用户拒绝访问，所有后续调用都将立即返回错误。如果允许-将立即处理。每次运行脚本时都必须获得访问权限。
+函数执行查询并返回一个表，其中包含成功时的结果。出错时，将返回包含错误文本的字符串。在logcat中会有更多的信息。
+结果表可以包含以下字段：
+url-请求url，例如“http://httpbin.org/headers”
+requestmethod-http方法，例如“get”
+代码-HTTP响应代码，例如200
+消息-HTTP消息，例如“不允许使用方法”
+headers—包含所有响应头的表。每个值也是一个带有数字键的表。通常只有一个值，但如果头满足多次，例如“set cookie”，则可能有多个值。
+ContentEncoding、ContentLength、ContentType、Date、Expiration、LastModified、UsingProxy、CipherSuite-基于类httpurlConnection的方法的字段。如果该方法返回空值，则该字段将不在表中。
+错误-正确或错误。如果服务器返回无效代码，则为true。
+Content—来自服务器的数据字符串。可以是空的。
+如果数据字符串不是nil，则将执行post请求，否则将执行get。
+默认情况下，post请求设置为“content type”=“application/x-www-form-urlencoded”。您可以自己指定这个头来指定所需的类型。同样，设置标题“内容长度”。其他头文件可以由系统设置，并取决于Android的实现。
+HTTPS请求不执行证书验证。
+print('GET 1: ', gg.makeRequest('http://httpbin.org/headers').content) -- simple GET request
+print('GET 2: ', gg.makeRequest('http://httpbin.org/headers', {['User-Agent']='My BOT'}).content) -- GET request with headers
+print('GET 3: ', gg.makeRequest('http://httpbin.org/headers', {['User-Agent']={'My BOT', 'Tester'}}).content) -- GET request with headers
+print('GET 4: ', gg.makeRequest('https://httpbin.org/get?param1=value2&param3=value4', {['User-Agent']='My BOT'}).content) -- HTTPS GET request with headers
+print('POST 1: ', gg.makeRequest('http://httpbin.org/post', nil, 'post1=val2&post3=val4').content) -- simple POST request
+print('POST 2: ', gg.makeRequest('http://httpbin.org/post', {['User-Agent']='My BOT'}, 'post1=val2&post3=val4').content) -- POST request with headers
+print('POST 3: ', gg.makeRequest('http://httpbin.org/post', {['User-Agent']={'My BOT', 'Tester'}}, 'post1=val2&post3=val4').content) -- POST request with headers
+print('POST 4: ', gg.makeRequest('https://httpbin.org/post?param1=value2&param3=value4', {['User-Agent']='My BOT'}, 'post1=val2&post3=val4').content) -- HTTPS POST request with headers
+print('FULL: ', gg.makeRequest('https://httpbin.org/headers')) -- print full info about the request
+
+multiChoice() : 多选
+print('1: ', gg.multiChoice({'A', 'B', 'C', 'D'}))
+-- show list of 4 items without checked items
+print('2: ', gg.multiChoice({'A', 'B', 'C', 'D'}, {[2]=true, [4]=true}))
+-- show list of 4 items with checked 2 and 4 items
+print('3: ', gg.multiChoice({'A', 'B', 'C', 'D'}, {[3]=true}, 'Select letter:'))
+-- show list of 4 items with checked 3 item and message
+print('4: ', gg.multiChoice({'A', 'B', 'C', 'D'}, {}, 'Select letter:'))
+-- show list of 4 items without checked items and message
+-- Performing multiple actions
+local t = gg.multiChoice({'A', 'B', 'C', 'D'})
+if t == nil then
+    gg.alert('Canceled')
+else
+    if t[1] then
+        gg.alert('do A')
+    end
+    if t[2] then
+        gg.alert('do B')
+    end
+    if t[3] then
+        gg.alert('do C')
+    end
+    if t[4] then
+        gg.alert('do D')
+    end
+end
+- n -
+
+numberFromLocale() : 将本地化的十进制分隔符和千位分隔符替换为在Lua中使用的分隔符（如英语）
+print(gg.numberFromLocale('1.234,567')) -- print '1234.567' for German locale
+
+numberToLocale() : 用本地化版本替换十进制分隔符和千位分隔符
+print(gg.numberToLocale('1,234.567')) -- print '1234,567' for German locale
+
+- p -
+
+PACKAGE : 获取修改器包名
+
+getResults的标志:[
+POINTER_EXECUTABLE : 可执行的内存指针
+POINTER_EXECUTABLE_WRITABLE : 指向可执行和可写内存的指针
+POINTER_NO : 没有指针
+POINTER_READ_ONLY : 只读
+POINTER_WRITABLE : 写
+]
+
+processKill() : 强制终止所选进程
+
+processPause() : 暂停所选进程
+
+processResume() : 解除所选进程暂停状态
+
+processToggle() : 
+切换所选进程的暂停状态。
+如果进程暂停，则将继续，否则将暂停。
+
+prompt() : 对话框
+参数:'number', 'text', 'path', 'file', 'setting', 'speed', 'checkbox'
+print('prompt 1: ', gg.prompt(
+    {'ask any', 'ask num', 'ask text', 'ask path', 'ask file', 'ask set', 'ask speed', 'checked', 'not checked'},
+    {[1]='any val', [7]=123, [6]=-0.34, [8]=true},
+    {[2]='number', [3]='text', [4]='path', [5]='file', [6]='setting', [7]='speed', [8]='checkbox', [9]='checkbox'}
+))
+print('prompt 2: ', gg.prompt(
+    {'ask any', 'ask num', 'ask text', 'ask path', 'ask file', 'ask set', 'ask speed', 'check'},
+    {[1]='any val', [7]=123, [6]=-0.34}
+))
+print('prompt 3: ', gg.prompt(
+    {'ask any', 'ask num', 'ask text', 'ask path', 'ask file', 'ask set', 'ask speed', 'check'}
+))
+-- Performing multiple actions
+local t = gg.prompt({'A', 'B', 'C', 'D'}, nil, {'checkbox', 'checkbox', 'checkbox', 'checkbox'})
+if t == nil then
+    gg.alert('Canceled')
+else
+    if t[1] then
+        gg.alert('do A')
+    end
+    if t[2] then
+        gg.alert('do B')
+    end
+    if t[3] then
+        gg.alert('do C')
+    end
+    if t[4] then
+        gg.alert('do D')
+    end
+end
+- r -
+
+refineAddress() : 改善地址搜索
+['refineAddress'] = function (text, mask, type, sign, memoryFrom, memoryTo) end, -- gg.refineAddress(string text [, long mask = -1 [, int type = gg.TYPE_AUTO [, int sign = gg.SIGN_EQUAL [, long memoryFrom = 0 [, long memoryTo = -1]]]]]) -> true || string with error
+	
+
+refineNumber() : 改善精确搜索
+['refineNumber'] = function (text, type, encrypted, sign, memoryFrom, memoryTo) end, -- gg.refineNumber(string text [, int type = gg.TYPE_AUTO [, bool encrypted = false [, int sign = gg.SIGN_EQUAL [, long memoryFrom = 0 [, long memoryTo = -1]]]]]) -> true || string with error
+	
+
+内存范围:[
+REGION_ANONYMOUS : gg
+REGION_ASHMEM : gg
+REGION_BAD : gg
+REGION_C_ALLOC : gg
+REGION_C_BSS : gg
+REGION_C_DATA : gg
+REGION_C_HEAP : gg
+REGION_CODE_APP : gg
+REGION_CODE_SYS : gg
+REGION_JAVA : gg
+REGION_JAVA_HEAP : gg
+REGION_OTHER : gg
+REGION_PPSSPP : gg
+REGION_STACK : gg
+]
+
+removeListItems() : 移除保存列表中的结果
+-- retrieving a table from another call
+t = gg.getListItems()
+print('removeListItems: ', gg.removeListItems(t))
+-- creating a table as a list of items
+t = {}
+t[1] = {}
+t[1].address = 0x18004030 -- some desired address
+t[2] = {}
+t[2].address = 0x18004040 -- another desired address
+print('removeListItems: ', gg.removeListItems(t))
+-- creating a table as a list of adresses
+t = {}
+t[1] = 0x18004030 -- some desired address
+t[2] = 0x18004040 -- another desired address
+print('removeListItems: ', gg.removeListItems(t))
+
+removeResults() : 移除搜索列表中的结果
+gg.searchNumber('10', gg.TYPE_DWORD)
+local r = gg.getResults(5)
+print('Remove first 5 results: ', gg.removeResults(r))
+
+require() : 检查修改器版本
+gg.require('8.31.1')
+gg.require('8.31.1', 5645)
+gg.require(nil, 5645)
+- s -
+
+SAVE_AS_TEXT : 标志
+
+saveList() : 保存为文件
+print('saveList:', gg.saveList('/sdcard/Notes/gg.victim.txt'))
+print('saveList:', gg.saveList('/sdcard/Notes/gg.victim.txt', 0))
+print('saveList:', gg.saveList('/sdcard/Notes/gg.victim.txt', gg.SAVE_AS_TEXT))
+
+saveVariable() : 
+将变量保存到文件中。
+执行的结果将是一个.lua文件，然后可以通过
+local var = assert(loadfile(filename))()
+只存储字符串、数字和表。循环引用处理正确。如果您需要更多信息，请阅读：Lua用户wiki:表序列化
+local t = {}
+t['test1'] = {1, 2, 3, 4}
+t['test2'] = 42
+t['test3'] = 86.3
+t['test4'] = 'weapon'
+t[4] = t['test1']
+gg.saveVariable(t, '/sdcard/test.lua') -- saved
+local var = assert(loadfile('/sdcard/test.lua'))() -- loaded
+-- Saving input between script restarts
+local configFile = gg.getFile()..'.cfg'
+local data = loadfile(configFile)
+if data ~= nil then data = data() end
+local input = gg.prompt({'Please input something'}, data)
+if input == nil then os.exit() end
+gg.saveVariable(input, configFile)
+
+searchAddress() : 搜索地址
+gg.searchAddress('A20', 0xFFFFFFFF)
+gg.searchAddress('B20', 0xFF0, gg.TYPE_DWORD, gg.SIGN_NOT_EQUAL)
+gg.searchAddress('0B?0', 0xFFF, gg.TYPE_FLOAT)
+gg.searchAddress('??F??', 0xBA0, gg.TYPE_BYTE, gg.SIGN_NOT_EQUAL, 0x9000, 0xA09000)
+
+searchFuzzy() : 模糊搜索
+gg.searchFuzzy()
+-- value not changed
+gg.searchFuzzy('0', gg.SIGN_FUZZY_NOT_EQUAL)
+-- value changed
+gg.searchFuzzy('0', gg.SIGN_FUZZY_GREATER)
+-- value increased
+gg.searchFuzzy('0', gg.SIGN_FUZZY_LESS)
+-- value decreased
+gg.searchFuzzy('15')
+-- value increased by 15
+gg.searchFuzzy('-115')
+-- value decreased by 115
+
+searchNumber() : 精确搜索
+gg.searchNumber('10', gg.TYPE_DWORD)
+gg.getResults(5)
+gg.editAll('15', gg.TYPE_DWORD)
+-- with float:
+gg.searchNumber('10.1', gg.TYPE_FLOAT)
+gg.getResults(5)
+gg.editAll('15.2', gg.TYPE_FLOAT)
+-- with XOR mode
+gg.searchNumber('10X4', gg.TYPE_DWORD)
+gg.getResults(5)
+gg.editAll('15X4', gg.TYPE_DWORD)
+
+setRanges() : 设置内存范围
+gg.setRanges(gg.REGION_C_HEAP)
+gg.setRanges(bit32.bor(gg.REGION_C_HEAP, gg.REGION_C_ALLOC, gg.REGION_ANONYMOUS))
+gg.setRanges(gg.REGION_C_HEAP | gg.REGION_C_ALLOC | gg.REGION_ANONYMOUS)
+
+setSpeed() : 设置加速
+范围为双浮点[1.0E-9; 1.0E9]
+
+setValues() : 设置值
+gg.searchNumber('10', gg.TYPE_DWORD)
+local r = gg.getResults(5) -- load items
+r[1].value = '15'
+print('Edited: ', gg.setValues(r))
+local t = {}
+t[1] = {}
+t[1].address = 0x18004030 -- some desired address
+t[1].flags = gg.TYPE_DWORD
+t[1].value = 12345
+t[2] = {}
+t[2].address = 0x18004040 -- another desired address
+t[2].flags = gg.TYPE_BYTE
+t[2].value = '7Fh'
+print('Set', t, gg.setValues(t))
+
+setVisible() : 设置界面是否显示
+
+SIGN_EQUAL-----------等于
+SIGN_FUZZY_EQUAL-----------无变化
+SIGN_FUZZY_GREATER-----------增加了
+SIGN_FUZZY_LESS-----------减少了
+SIGN_FUZZY_NOT_EQUAL-----------有变化
+SIGN_GREATER_OR_EQUAL-----------大于等于
+SIGN_LESS_OR_EQUAL-----------小于等于
+SIGN_NOT_EQUAL-----------不等于
+
+skipRestoreState() : 
+脚本完成后，不要恢复gameguardian的状态。
+例如，默认情况下，在结束脚本执行后恢复的一组内存区域。此调用允许阻止此操作。
+gg.setRanges(bit32.bxor(gg.REGION_C_HEAP, gg.REGION_C_ALLOC, gg.REGION_ANONYMOUS))
+-- do some things like search values
+-- gg.skipRestoreState() -- if you uncomment this line -
+-- memory ranges after end script stay same as we set in first line.
+-- If not - it will be restored to state which be before script run.
+
+sleep() : 延时
+1秒=1000毫秒
+-- 200 ms
+gg.sleep(200)
+-- 30 s
+local v = 30
+gg.sleep(v*1000)
+
+startFuzzy() : 开始模糊搜索
+gg.startFuzzy()
+gg.startFuzzy(gg.TYPE_DWORD)
+gg.startFuzzy(gg.TYPE_FLOAT)
+gg.startFuzzy(gg.TYPE_BYTE, 0x9000, 0xA09000)
+- t -
+
+timeJump() : 时间跳跃
+print('jump 1:', gg.timeJump('42345678'))
+-- jump for 1 year 125 days 2 hours 41 minutes 18 seconds
+print('jump 2:', gg.timeJump('1:125:2:41:18'))
+-- same as above
+print('jump 3:', gg.timeJump('5:13'))
+-- jump for 5 minutes 13 seconds
+print('jump 4:', gg.timeJump('7:3:1'))
+-- jump for 7 hours 3 minutes 1 seconds
+print('jump 5:', gg.timeJump('3600'))
+-- jump for 1 hour
+print('jump 6:', gg.timeJump('2:15:54:32'))
+-- jump for 2 days 15 hours 54 minutes 32 seconds
+print('jump 7:', gg.timeJump('3600.15'))
+-- jump for 1 hour 0.15 seconds
+print('jump 8:', gg.timeJump('7:3:1.519'))
+-- jump for 7 hours 3 minutes 1.519 seconds
+
+toast() : 提示
+参数:布尔值
+作用:使显示时更很短
+gg.toast('This is toast')
+-- Show text notification for a long period of time
+gg.toast('This is toast', true)
+-- Show text notification for a short period of time
+
+数据类型:
+[TYPE_AUTO : 全部
+TYPE_BYTE : 单字节
+TYPE_DOUBLE : 双精度浮点
+TYPE_DWORD : 四字节
+TYPE_FLOAT : 单精度浮点
+TYPE_QWORD : 八字节
+TYPE_WORD : 二字节
+TYPE_XOR : 异或]
+- u -
+
+unrandomizer() : 反随机数生成器
+print('unrandomizer:', gg.unrandomizer(0)) -- set only qword = 0
+print('unrandomizer:', gg.unrandomizer(0, 1)) -- set only qword = 0 with increment = 1
+print('unrandomizer:', gg.unrandomizer(nil, nil, 0.3)) -- set only double without increment
+print('unrandomizer:', gg.unrandomizer(nil, nil, 0.3, 0.01)) -- set only double with increment
+print('unrandomizer:', gg.unrandomizer(2, 3, 0.45, 0.67)) -- set both
+print('unrandomizer:', gg.unrandomizer()) -- off
+
+- v -
+
+VERSION : 文本版本
+
+VERSION_INT : 数字版本
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{ -- table(c52f23a)
+	['_G'] = { -- table(c52f23a)
+		-- *** RECURSION ***
+	},
+	['_VERSION'] = 'Lua 5.3 (with Luaj 3.0.1)',
+	['assert'] = function: assert,
+	['assert2'] = function: assert2,
+	['bit32'] = { -- table(c8881d5)
+		-- *** RECURSION ***
+	},
+	['collectgarbage'] = function: collectgarbage,
+	['debug'] = { -- table(44c5448)
+		['debug'] = function: debug.debug,
+		['gethook'] = function: debug.gethook,
+		['getinfo'] = function: debug.getinfo,
+		['getlocal'] = function: debug.getlocal,
+		['getmetatable'] = function: debug.getmetatable,
+		['getregistry'] = function: debug.getregistry,
+		['getupvalue'] = function: debug.getupvalue,
+		['getuservalue'] = nil,
+		['sethook'] = function: debug.sethook,
+		['setlocal'] = function: debug.setlocal,
+		['setmetatable'] = function: debug.setmetatable,
+		['setupvalue'] = function: debug.setupvalue,
+		['setuservalue'] = nil,
+		['traceback'] = function: debug.traceback,
+		['upvalueid'] = function: debug.upvalueid,
+		['upvaluejoin'] = function: debug.upvaluejoin,
+	},
+	['dofile'] = function: dofile,
+	['error'] = function: error,
+	['getmetatable'] = function: getmetatable,
+	['gg'] = { -- table(dde02e1)
+		['BUILD'] = 15916,
+		['CACHE_DIR'] = '/data/user/0/com.igce.tencent/com.tencent.igce/data/user/0/com.tencent.wemeet.app/cache',
+		['DUMP_SKIP_SYSTEM_LIBS'] = 1,
+		['EXT_CACHE_DIR'] = '/storage/emulated/0/Android/data/com.tencent.wemeet.app/cache',
+		['EXT_FILES_DIR'] = '/storage/emulated/0/Android/data/com.tencent.wemeet.app/files',
+		['EXT_STORAGE'] = '/storage/emulated/0',
+		['FILES_DIR'] = '/data/user/0/com.igce.tencent/com.tencent.igce/data/user/0/com.tencent.wemeet.app/files',
+		['FREEZE_IN_RANGE'] = 3,
+		['FREEZE_MAY_DECREASE'] = 2,
+		['FREEZE_MAY_INCREASE'] = 1,
+		['FREEZE_NORMAL'] = 0,
+		['LOAD_APPEND'] = 8,
+		['LOAD_VALUES'] = 2,
+		['LOAD_VALUES_FREEZE'] = 3,
+		['PACKAGE'] = 'com.tencent.wemeet.app',
+		['POINTER_EXECUTABLE'] = 2,
+		['POINTER_EXECUTABLE_WRITABLE'] = 1,
+		['POINTER_NO'] = 4,
+		['POINTER_READ_ONLY'] = 8,
+		['POINTER_WRITABLE'] = 16,
+		['PROT_EXEC'] = 4,
+		['PROT_NONE'] = 0,
+		['PROT_READ'] = 2,
+		['PROT_WRITE'] = 1,
+		['REGION_ANONYMOUS'] = 32,
+		['REGION_ASHMEM'] = 524288,
+		['REGION_BAD'] = 131072,
+		['REGION_CODE_APP'] = 16384,
+		['REGION_CODE_SYS'] = 32768,
+		['REGION_C_ALLOC'] = 4,
+		['REGION_C_BSS'] = 16,
+		['REGION_C_DATA'] = 8,
+		['REGION_C_HEAP'] = 1,
+		['REGION_JAVA'] = 65536,
+		['REGION_JAVA_HEAP'] = 2,
+		['REGION_OTHER'] = -2080896,
+		['REGION_PPSSPP'] = 262144,
+		['REGION_STACK'] = 64,
+		['REGION_VIDEO'] = 1048576,
+		['SAVE_AS_TEXT'] = 1,
+		['SIGN_EQUAL'] = 536870912,
+		['SIGN_FUZZY_EQUAL'] = 536870912,
+		['SIGN_FUZZY_GREATER'] = 67108864,
+		['SIGN_FUZZY_LESS'] = 134217728,
+		['SIGN_FUZZY_NOT_EQUAL'] = 268435456,
+		['SIGN_GREATER_OR_EQUAL'] = 67108864,
+		['SIGN_LESS_OR_EQUAL'] = 134217728,
+		['SIGN_NOT_EQUAL'] = 268435456,
+		['TAB_MEMORY_EDITOR'] = 3,
+		['TAB_SAVED_LIST'] = 2,
+		['TAB_SEARCH'] = 1,
+		['TAB_SETTINGS'] = 0,
+		['TYPE_AUTO'] = 127,
+		['TYPE_BYTE'] = 1,
+		['TYPE_DOUBLE'] = 64,
+		['TYPE_DWORD'] = 4,
+		['TYPE_FLOAT'] = 16,
+		['TYPE_QWORD'] = 32,
+		['TYPE_WORD'] = 2,
+		['TYPE_XOR'] = 8,
+		['VERSION'] = '91.0',
+		['VERSION_INT'] = 9100,
+		['addListItems'] = function (items) end, -- gg.addListItems(table items) -> true || string with error
+		['alert'] = function (text, positive, negative, neutral) end, -- gg.alert(string text [, string positive = 'ok' [, string negative = nil [, string neutral = nil]]]) -> int: 0 = cancel, 1 = positive, 2 = negative, 3 = neutral
+		['allocatePage'] = function (mode, address) end, -- gg.allocatePage([int mode = gg.PROT_READ | gg.PROT_EXEC [, long address = 0]) -> long || string with error
+		['bytes'] = function (text, encoding) end, -- gg.bytes(string text [, string encoding = 'UTF-8']) -> table
+		['choice'] = function (items, selected, message) end, -- gg.choice(table items [, string selected = nil [, string message = nil]]) -> string || nil
+		['clearList'] = function () end, -- gg.clearList() -> true || string with error
+		['clearResults'] = function () end, -- gg.clearResults() -> nil
+		['copyMemory'] = function (from, to, bytes) end, -- gg.copyMemory(long from, long to, int bytes) -> true || string with error
+		['copyText'] = function (text, fixLocale) end, -- gg.copyText(string text [, bool fixLocale = true]) -> nil
+		['dumpMemory'] = function (from, to, dir, flags) end, -- gg.dumpMemory(long from, long to, string dir [, int flags = nil]) -> true || string with error
+		['editAll'] = function (value, type) end, -- gg.editAll(string value, int type) -> count of changed || string with error
+		['getActiveTab'] = function () end, -- gg.getActiveTab() -> bool
+		['getFile'] = function () end, -- gg.getFile() -> string
+		['getLine'] = function () end, -- gg.getLine() -> int
+		['getListItems'] = function () end, -- gg.getListItems() -> table || string with error
+		['getLocale'] = function () end, -- gg.getLocale() -> string
+		['getRanges'] = function () end, -- gg.getRanges() -> int
+		['getRangesList'] = function (filter) end, -- gg.getRangesList([string filter = '']) -> table
+		['getResults'] = function (maxCount, skip, addressMin, addressMax, valueMin, valueMax, type, fractional, pointer) end, -- gg.getResults(int maxCount [, int skip = 0 [, long addressMin = nil [, long addressMax = nil [, string valueMin = nil [, string valueMax = nil [, int type = nil [, string fractional = nil [, int pointer = nil]]]]]]]]) -> table || string with error
+		['getResultsCount'] = function () end, -- gg.getResultsCount() -> long
+		['getSelectedElements'] = function () end, -- gg.getSelectedElements() -> table || string with error
+		['getSelectedListItems'] = function () end, -- gg.getSelectedListItems() -> table || string with error
+		['getSelectedResults'] = function () end, -- gg.getSelectedResults() -> table || string with error
+		['getSpeed'] = function () end, -- gg.getSpeed() -> double
+		['getTargetInfo'] = function () end, -- gg.getTargetInfo() -> table || nil
+		['getTargetPackage'] = function () end, -- gg.getTargetPackage() -> string || nil
+		['getValues'] = function (values) end, -- gg.getValues(table values) -> table || string with error
+		['getValuesRange'] = function (values) end, -- gg.getValuesRange(table values) -> table || string with error
+		['gotoAddress'] = function (address) end, -- gg.gotoAddress(long address) -> nil
+		['hideUiButton'] = function () end, -- gg.hideUiButton() -> nil
+		['isClickedUiButton'] = function () end, -- gg.isClickedUiButton() -> bool || nil
+		['isPackageInstalled'] = function (pkg) end, -- gg.isPackageInstalled(string pkg) -> bool
+		['isProcessPaused'] = function () end, -- gg.isProcessPaused() -> bool
+		['isVisible'] = function () end, -- gg.isVisible() -> bool
+		['loadList'] = function (file, flags) end, -- gg.loadList(string file [, int flags = 0]) -> true || string with error
+		['loadResults'] = function (results) end, -- gg.loadResults(table results) -> true || string with error
+		['makeRequest'] = function (url, headers, data) end, -- gg.makeRequest(string url [, table headers = {} [, string data = nil]]) -> table || string
+		['multiChoice'] = function (items, selection, message) end, -- gg.multiChoice(table items [, table selection = {} [, string message = nil]]) -> table || nil
+		['numberFromLocale'] = function (num) end, -- gg.numberFromLocale(string num) -> string
+		['numberToLocale'] = function (num) end, -- gg.numberToLocale(string num) -> string
+		['processKill'] = function () end, -- gg.processKill() -> bool
+		['processPause'] = function () end, -- gg.processPause() -> bool
+		['processResume'] = function () end, -- gg.processResume() -> bool
+		['processToggle'] = function () end, -- gg.processToggle() -> bool
+		['prompt'] = function (prompts, defaults, types) end, -- gg.prompt(table prompts [, table defaults = {} [, table types = {} ]]) -> nil || table with keys from prompts and values from inputs
+		['refineAddress'] = function (text, mask, type, sign, memoryFrom, memoryTo) end, -- gg.refineAddress(string text [, long mask = -1 [, int type = gg.TYPE_AUTO [, int sign = gg.SIGN_EQUAL [, long memoryFrom = 0 [, long memoryTo = -1]]]]]) -> true || string with error
+		['refineNumber'] = function (text, type, encrypted, sign, memoryFrom, memoryTo) end, -- gg.refineNumber(string text [, int type = gg.TYPE_AUTO [, bool encrypted = false [, int sign = gg.SIGN_EQUAL [, long memoryFrom = 0 [, long memoryTo = -1]]]]]) -> true || string with error
+		['removeListItems'] = function (items) end, -- gg.removeListItems(table items) -> true || string with error
+		['removeResults'] = function (results) end, -- gg.removeResults(table results) -> true || string with error
+		['require'] = function (version, build) end, -- gg.require([string version = nil [, int build = 0]]) -> nil
+		['saveList'] = function (file, flags) end, -- gg.saveList(string file [, int flags = 0]) -> true || string with error
+		['saveVariable'] = function (variable, filename) end, -- gg.saveVariable(mixed variable, string filename) -> true || string with error
+		['searchAddress'] = function (text, mask, type, sign, memoryFrom, memoryTo) end, -- gg.searchAddress(string text [, long mask = -1 [, int type = gg.TYPE_AUTO [, int sign = gg.SIGN_EQUAL [, long memoryFrom = 0 [, long memoryTo = -1]]]]]) -> true || string with error
+		['searchFuzzy'] = function (difference, sign, type, memoryFrom, memoryTo) end, -- gg.searchFuzzy([string difference = '0' [, int sign = gg.SIGN_FUZZY_EQUAL [, int type = gg.TYPE_AUTO [, long memoryFrom = 0 [, long memoryTo = -1]]]]]) -> true || string with error
+		['searchNumber'] = function (text, type, encrypted, sign, memoryFrom, memoryTo) end, -- gg.searchNumber(string text [, int type = gg.TYPE_AUTO [, bool encrypted = false [, int sign = gg.SIGN_EQUAL [, long memoryFrom = 0 [, long memoryTo = -1]]]]]) -> true || string with error
+		['setRanges'] = function (ranges) end, -- gg.setRanges(int ranges) -> nil
+		['setSpeed'] = function (speed) end, -- gg.setSpeed(double speed) -> true || string with error
+		['setValues'] = function (values) end, -- gg.setValues(table values) -> true || string with error
+		['setVisible'] = function (visible) end, -- gg.setVisible(bool visible) -> nil
+		['showUiButton'] = function () end, -- gg.showUiButton() -> nil
+		['skipRestoreState'] = function () end, -- gg.skipRestoreState() -> nil
+		['sleep'] = function (milliseconds) end, -- gg.sleep(int milliseconds) -> nil
+		['startFuzzy'] = function (type, memoryFrom, memoryTo) end, -- gg.startFuzzy([int type = gg.TYPE_AUTO [, long memoryFrom = 0 [, long memoryTo = -1]]]) -> true || string with error
+		['timeJump'] = function (time) end, -- gg.timeJump(string time) -> true || string with error
+		['toast'] = function (text, fast) end, -- gg.toast(string text [, bool fast = false]) -> nil
+		['unrandomizer'] = function (qword, qincr, double_, dincr) end, -- gg.unrandomizer([long qword = nil [, long qincr = nil [, double double_ = nil [, double dincr = nil]]]]) -> true || string with error
+	},
+	['io'] = { -- table(2876460)
+		['close'] = function: close,
+		['flush'] = function: flush,
+		['input'] = function: input,
+		['lines'] = function: lines,
+		['open'] = function: open,
+		['output'] = function: output,
+		['popen'] = function: popen,
+		['read'] = function: read,
+		['stderr'] = file (75891166),
+		['stdout'] = file (108735769),
+		['tmpfile'] = function: tmpfile,
+		['type'] = function: type,
+		['write'] = function: write,
+	},
+	['ipairs'] = function: ipairs,
+	['load'] = function: load,
+	['loadfile'] = function: loadfile,
+	['math'] = { -- table(d6c5dea)
+		-- *** RECURSION ***
+	},
+	['next'] = function: next,
+	['os'] = { -- table(e666063)
+		['clock'] = function: clock,
+		['date'] = function: date,
+		['difftime'] = function: difftime,
+		['execute'] = function: execute,
+		['exit'] = function: gg.exit,
+		['getenv'] = function: getenv,
+		['remove'] = function: remove,
+		['rename'] = function: rename,
+		['setlocale'] = function: setlocale,
+		['time'] = function: time,
+		['tmpname'] = function: tmpname,
+	},
+	['package'] = { -- table(1549fbf)
+		['config'] = '/
+;
+?
+!
+-
+',
+		['loaded'] = { -- table(66e668c)
+			['bit32'] = { -- table(c8881d5)
+				['arshift'] = function: arshift,
+				['band'] = function: band,
+				['bnot'] = function: bnot,
+				['bor'] = function: bor,
+				['btest'] = function: btest,
+				['bxor'] = function: bxor,
+				['extract'] = function: extract,
+				['lrotate'] = function: lrotate,
+				['lshift'] = function: lshift,
+				['replace'] = function: replace,
+				['rrotate'] = function: rrotate,
+				['rshift'] = function: rshift,
+			},
+			['debug'] = { -- table(44c5448)
+				-- *** RECURSION ***
+			},
+			['gg'] = { -- table(dde02e1)
+				-- *** RECURSION ***
+			},
+			['io'] = { -- table(2876460)
+				-- *** RECURSION ***
+			},
+			['math'] = { -- table(d6c5dea)
+				['abs'] = function: math.abs,
+				['acos'] = function: math.acos,
+				['asin'] = function: math.asin,
+				['atan'] = function: math.atan2,
+				['atan2'] = function: math.atan2,
+				['ceil'] = function: math.ceil,
+				['cos'] = function: math.cos,
+				['cosh'] = function: math.cosh,
+				['deg'] = function: math.deg,
+				['exp'] = function: math.exp,
+				['floor'] = function: math.floor,
+				['fmod'] = function: math.fmod,
+				['frexp'] = function: math.frexp,
+				['huge'] = inf,
+				['ldexp'] = function: math.ldexp,
+				['log'] = function: math.log,
+				['max'] = function: math.max,
+				['maxinteger'] = 9223372036854775807,
+				['min'] = function: math.min,
+				['mininteger'] = -9223372036854775808,
+				['modf'] = function: math.modf,
+				['pi'] = 3.141592653589793,
+				['pow'] = function: math.pow,
+				['rad'] = function: math.rad,
+				['random'] = function: math.random,
+				['randomseed'] = function: math.randomseed,
+				['sin'] = function: math.sin,
+				['sinh'] = function: math.sinh,
+				['sqrt'] = function: math.sqrt,
+				['tan'] = function: math.tan,
+				['tanh'] = function: math.tanh,
+				['tointeger'] = function: math.tointeger,
+				['type'] = function: math.type,
+				['ult'] = function: math.ult,
+			},
+			['os'] = { -- table(e666063)
+				-- *** RECURSION ***
+			},
+			['package'] = { -- table(1549fbf)
+				-- *** RECURSION ***
+			},
+			['string'] = { -- table(7e15f78)
+				['byte'] = function: string.byte,
+				['char'] = function: string.char,
+				['dump'] = function: string.dump,
+				['find'] = function: string.find,
+				['format'] = function: gg.format,
+				['gmatch'] = function: string.gmatch,
+				['gsub'] = function: string.gsub,
+				['len'] = function: string.len,
+				['lower'] = function: string.lower,
+				['match'] = function: string.match,
+				['pack'] = function: string.pack,
+				['packsize'] = function: string.packsize,
+				['rep'] = function: string.rep,
+				['reverse'] = function: string.reverse,
+				['sub'] = function: string.sub,
+				['unpack'] = function: string.unpack,
+				['upper'] = function: string.upper,
+			},
+			['table'] = { -- table(7fafeeb)
+				-- *** RECURSION ***
+			},
+			['utf8'] = { -- table(8bd78db)
+				['char'] = function: utf8.char,
+				['charpattern'] = '[ -�-�][�-�]*',
+				['codepoint'] = function: utf8.codepoint,
+				['codes'] = function: utf8.codes,
+				['len'] = function: utf8.len,
+				['offset'] = function: utf8.offset,
+			},
+		},
+		['loadlib'] = function: package.loadlib,
+		['path'] = '?.lua',
+		['preload'] = { -- table(4dc6651)
+		},
+		['searchers'] = { -- table(caa6eb6)
+			[1] = function: package.preload_searcher,
+			[2] = function: package.lua_searcher,
+			[3] = function: package.java_searcher,
+		},
+		['searchpath'] = function: package.searchpath,
+	},
+	['pairs'] = function: pairs,
+	['pcall'] = function: pcall,
+	['print'] = function: print,
+	['rawequal'] = function: rawequal,
+	['rawget'] = function: rawget,
+	['rawlen'] = function: rawlen,
+	['rawset'] = function: rawset,
+	['require'] = function: package.require,
+	['select'] = function: select,
+	['setmetatable'] = function: setmetatable,
+	['string'] = { -- table(7e15f78)
+		-- *** RECURSION ***
+	},
+	['table'] = { -- table(7fafeeb)
+		['concat'] = function: table.concat,
+		['insert'] = function: table.insert,
+		['move'] = function: table.move,
+		['pack'] = function: table.pack,
+		['remove'] = function: table.remove,
+		['sort'] = function: table.sort,
+		['unpack'] = function: table.unpack,
+	},
+	['tonumber'] = function: tonumber,
+	['tostring'] = function: tostring,
+	['type'] = function: type,
+	['utf8'] = { -- table(8bd78db)
+		-- *** RECURSION ***
+	},
+	['xpcall'] = function: xpcall,
+}
