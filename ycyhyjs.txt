@@ -1,191 +1,191 @@
-local Types = {
-    B = 1,
-    W = 2,
-    D = 4,
-    X = 8,
-    F = 16,
-    Q = 32,
-    E = 64,
-    A = 128,
+当地的类型={
+B=1，1,
+W=2，2,
+D=4，4,
+X=8，8,
+F=16，16,
+Q=32，32,
+E=64，64,
+a=128，128,
 }
 
-local fun_list = {"c"}
-local fun_add = function(fun_name)
-    local tmp_fun_list = {}
-    for i = 1, #fun_list do
-        if fun_list[i] == fun_name then
-            return;
-        end
-        table.insert(tmp_fun_list, fun_list[i])
-    end
-    table.insert(tmp_fun_list, fun_name)
-    fun_list = tmp_fun_list
-    return;
-end
+当地的fun_list={"c"}"c"}
+当地的fun_add=功能(fun_name)
+本地tmp_fun_list={}当地的tmp_fun_list={}
+对于i=为I=1，#fun_list
+如果fun_list[i]==fun_name，则如果fun_list[i]==fun_name然后
+返回；返回;
+结束结束
+table.insert(tmp_fun_list，fun_list[i])
+结束结束
+table.insert(tmp_fun_list，fun_name)
+fun_list=tmp_fun_list
+返回；返回;
+结束
 
-local fun_return = function()
-    local tmp_fun_list = {}
-    for i = 1, #fun_list - 1 do
-        table.insert(tmp_fun_list, fun_list[i])
-    end
-    fun_list = tmp_fun_list
-    if #fun_list > 0 then
-        _ENV[fun_list[#fun_list]]()
-    else
-        gg.alert("！")
-    end
-    return;
-end
-
-
+当地的fun_return=功能()
+本地tmp_fun_list={}当地的tmp_fun_list={}
+对于i=为I=1，#fun_list-1做
+table.insert(tmp_fun_list，fun_list[i])
+结束结束
+fun_list=tmp_fun_list
+如果#fun_list>如果#fun_list>0然后
+_ENV[fun_list[#fun_list]]()
+其他其他
+gg.alert("！")"！")
+结束结束
+返回；返回;
+结束
 
 
-local exit = os.exit
-function os.exit() 
+
+
+当地的exit=os.exit
+功能os.exit()
     
-    exit()
-end
+出口()
+结束
     
-function c_a() -- 局内分数
-    local FLAGS = Types['D']
-    gg.clearResults()
-    gg.setRanges(32)
-    gg.searchNumber("1141866496", FLAGS)
-    local count = gg.getResultsCount()
-    local results = gg.getResults(count)
-    gg.clearResults()
-    local spare = {{'1120534528', 1536, Types['D']}}
-    for i = 1, #spare do
-        local tmp, resultsTmp = {}, {}
-        for _, v in ipairs(results) do
-            table.insert(tmp, {
-                flags = spare[i][3] or FLAGS,
-                address = v.address + tonumber(spare[i][2]),
+功能C_a()-- 局内分数
+本地标志=类型['D']当地的标志=类型['D']
+gg.clearResults()
+gg.setRanges(32)32)
+gg.searchNumber("1141866496"，标志)"1141866496"，标志)
+本地计数=gg.getResultsCount()当地的count=gg.getResultsCount()
+本地结果=gg.getResults(count)当地的results=gg.getResults(count)
+gg.clearResults()
+本地备件={{当地的备用={{1536，类型['D'，类型['D'，1536，类型['D']}}
+对于i=为I=1，#备用
+本地tmp，resultsTmp={}，{}当地的tmp，resultsTmp={}，{}
+dofor_，vin ipairs(结果)做
+table.insert(tmp，{
+flags=备用[i][3]或旗帜，或旗帜，
+地址=v.address+tonumber(备用[i][2])，2]),
             })
-        end
-        tmp = gg.getValues(tmp)
-        for ii, v in ipairs(tmp) do
-            if v.value == spare[i][1] then
-                table.insert(resultsTmp, results[ii])
-            end
-        end
-        results = resultsTmp
-    end
+结束结束
+tmp=gg.getValues(tmp)
+对于i，v在...内ipairs(tmp)做为II，vin ipairs(tmp)做
+如果v.value==备用[i][如果v.value==备用[i][1] 然后
+table.insert(结果Tmp，结果[ii])
+结束结束
+结束结束
+results=resultsTmp
+结束结束
     
   
-    local input_value = gg.prompt({'输入分数，每增加10000分一个秘宝。改完吃个饼干或者肉刷新分数'}, {}, {'number'})
-    if not input_value then
-        gg.toast("操作已取消")
-        return
-    end
+本地输入_值=gg.prompt({当地的input_value=gg.prompt({'输入分数，每增加10000分一个秘宝。 改完吃个饼干或者肉刷新分数'}, {}, {'数字'}, {}, {'数字'})
+如果不是输入值，则如果不input_value然后
+gg.toast("操作已取消")"操作已取消")
+返回返回
+结束结束
     
 
-    if not input_value[1] then
-        gg.toast("输入无效")
-        return
-    end
+如果不是input_value[如果]，则如果不input_value[不input_value[
+gg.toast("输入无效")"输入无效")
+返回返回
+结束结束
     
-    local tmp, save, edit = {}, {}, {{input_value[1], '2996', 'D', false}}
-    for _, v in ipairs(results) do
-        for i = 1, #edit do
-            if edit[i][4] then
-                table.insert(save, {
-                    value = edit[i][1],
-                    flags = Types[edit[i][3]],
-                    freeze = true,
-                    name = "局内分数",
-                    address = v.address + tonumber(edit[i][2]),
+本地tmp，保存，编辑={}，{}，{{输入值[当地的tmp，保存，编辑={}，{}，{{input_value['2996'，'D'，假的}}当地的tmp，保存，编辑={}，{}，{{input_value['D'],假的，'D', 假的}}
+dofor_，vin ipairs(结果)做
+对于i=为I=1，#edit
+如果编辑[i][如果编辑[i][4] 然后
+table.insert(保存，{
+值=编辑[i][1]，1],
+标志=类型[编辑[i][3]]，3]],
+冻结=正确，正确,
+name="局内分数"，"局内分数",
+地址=v.address+tonumber(编辑[i][2])，2]),
                 })
-            else
-                table.insert(tmp, {
-                    value = edit[i][1],
-                    flags = Types[edit[i][3]],
-                    address = v.address + tonumber(edit[i][2]),
+其他其他
+table.insert(tmp，{
+值=编辑[i][1]，1],
+标志=类型[编辑[i][3]]，3]],
+地址=v.address+tonumber(编辑[i][2])，2]),
                 })
-            end
-        end
-    end
-    if #tmp > 0 or #save > 0 then
-        gg.setValues(tmp)
-        gg.setValues(save)
-        gg.addListItems(save)
-        gg.toast(string.format("成功修改%d个数值", #tmp + #save))
-    else
-        gg.toast("开启失败")
-    end
-end
+结束结束
+结束结束
+结束结束
+如果#tmp>如果#tmp>0，则或#节省>0，则如果#tmp>然后
+gg.setValues(tmp)
+gg.setValues(保存)
+gg.addListItems(保存)
+gg.toast(string.format("成功修改%d个数值"，#tmp+#save))"成功修改%d个数值"，#tmp+#save))
+其他其他
+GG.土司("开启失败")"开启失败")
+结束结束
+结束
 
-function c_b() -- 局内等级
-    local FLAGS = Types['D']
-    gg.clearResults()
-    gg.setRanges(32)
-    gg.searchNumber("1144602624", FLAGS)
-    local count = gg.getResultsCount()
-    local results = gg.getResults(count)
-    gg.clearResults()
-    local spare = {{'1067366482', -44, Types['D']}}
-    for i = 1, #spare do
-        local tmp, resultsTmp = {}, {}
-        for _, v in ipairs(results) do
-            table.insert(tmp, {
-                flags = spare[i][3] or FLAGS,
-                address = v.address + tonumber(spare[i][2]),
+功能C_b()-- 局内等级
+本地标志=类型['D']当地的标志=类型['D']
+gg.clearResults()
+gg.setRanges(32)32)
+gg.searchNumber("1144602624"，标志)"1144602624"，标志)
+本地计数=gg.getResultsCount()当地的count=gg.getResultsCount()
+本地结果=gg.getResults(count)当地的results=gg.getResults(count)
+gg.clearResults()
+本地备件={{当地的备用={{44, -'D'，类型['D']}}当地的备用={{44, -'D'，类型[
+对于i=为I=1，#备用做 为我=
+本地tmp，resultsTmp={}，{}当地的tmp，resultsTmp={}，{}
+for_，v为_，v在...内ipairs(结果)做
+table.insert(tmp，{
+flags=备用[i][3]或旗帜，或旗帜，
+地址=v.address+tonumber(备用[i][2])，2]),
             })
-        end
-        tmp = gg.getValues(tmp)
-        for ii, v in ipairs(tmp) do
-            if v.value == spare[i][1] then
-                table.insert(resultsTmp, results[ii])
-            end
-        end
-        results = resultsTmp
-    end
+结束
+tmp=gg.getValues(tmp)
+对于i，v在...内ipairs(tmp)做
+如果v.value==备用[i][1]，则
+table.insert(结果Tmp，结果[ii])
+结束
+结束
+results=resultsTmp
+结束
     
 
-    local input_value = gg.prompt({'输入1-79，改完之后升到下一级才会刷新修改的等级。等3级技能解锁以后再改，否则技能解锁不了'}, {}, {'number'})
-    if not input_value then
-        gg.toast("操作已取消")
-        return
-    end
+本地输入_值=gg.prompt({'输入1-79，改完之后升到下一级才会刷新修改的等级。 等3级技能解锁以后再改，否则技能解锁不了'}，{}，{'数字'})
+如果不是input_value，则
+GG.土司("操作已取消")
+返回
+结束
     
 
-    if not input_value[1] then
-        gg.toast("输入无效")
-        return
-    end
+如果不是input_value[1]，则
+GG.土司("输入无效")
+返回
+结束
     
-    local tmp, save, edit = {}, {}, {{input_value[1], '-80', 'D', false}}
-    for _, v in ipairs(results) do
-        for i = 1, #edit do
-            if edit[i][4] then
-                table.insert(save, {
-                    value = edit[i][1],
-                    flags = Types[edit[i][3]],
-                    freeze = true,
-                    name = "局内等级",
-                    address = v.address + tonumber(edit[i][2]),
+本地tmp，保存，编辑={}，{}，{{输入值[1]，'-80'，'D'，假的}}
+for_，v在……内ipairs(结果)做
+对于i=1，#edit做
+如果编辑[i][4]，则
+table.insert(保存，{
+值=编辑[i][1]，
+flags=类型[edit[i][3]]，
+冻结=正确，
+姓名="局内等级"，
+地址=v.address+tonumber(编辑[i][2])，
                 })
-            else
-                table.insert(tmp, {
-                    value = edit[i][1],
-                    flags = Types[edit[i][3]],
-                    address = v.address + tonumber(edit[i][2]),
+其他
+table.insert(tmp，{
+值=编辑[i][1]，
+flags=类型[edit[i][3]]，
+地址=v.address+tonumber(编辑[i][2])，
                 })
-            end
-        end
-    end
-    if #tmp > 0 or #save > 0 then
-        gg.setValues(tmp)
-        gg.setValues(save)
-        gg.addListItems(save)
-        gg.toast(string.format("成功修改%d个数值", #tmp + #save))
-    else
-        gg.toast("开启失败")
-    end
-end
+结束
+结束
+结束
+如果#tmp>0或#节省>0，则
+gg.setValues(tmp)
+gg.setValues(保存)
+gg.addListItems(保存)
+gg.toast(string.format("成功修改%d个数值"，#tmp+#save))
+其他
+GG.土司("开启失败")
+结束
+结束
 
-function c_combined() --资源修改
-    local FLAGS = Types['D']
+函数C_combined()--资源修改
+本地标志=类型[‘D’]
     gg.clearResults()
     gg.setRanges(32)
     gg.searchNumber("-579838658", FLAGS)
